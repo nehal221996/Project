@@ -39,7 +39,8 @@ function drawLineChart(category, series){
 	    },
 	    tooltip: {
 	        formatter: function() {
-	          return '<strong>'+this.x+': </strong>'+ this.y;
+	          return '<strong>' +this.x +': </strong>' + this.y;
+	         /* return 'We have ' + this.y + ' ' + this.point.options.category + 's'*/
 	        }
 	    },
 	
