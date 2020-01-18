@@ -16,9 +16,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = { "classpath:application.properties" } , ignoreResourceNotFound = true)
-public class HibernateConfiguration
-{
+@PropertySource(value = { "classpath:application.properties" }, ignoreResourceNotFound = true)
+public class HibernateConfiguration {
 	@Value("${db.driver}")
 	private String DB_DRIVER;
 
@@ -33,26 +32,23 @@ public class HibernateConfiguration
 
 	@Value("${hibernate.dialect}")
 	private String HIBERNATE_DIALECT;
-	
+
 	@Value("${hibernate.show_sql}")
 	private String HIBERNATE_SHOW_SQL;
 
 	@Value("${hibernate.hbm2ddl.auto}")
 	private String HIBERNATE_HBM2DDL_AUTO;
-	
+
 	@Value("${hibernate.current_session_context_class}")
 	private String HIBERNATE_CURRENT_SESSION;
-	
+
 	@Value("${entitymanager.packagesToScan}")
 	private String ENTITYMANAGER_PACKAGES_TO_SCAN;
 
-	
 	@Bean
-	public LocalSessionFactoryBean sessionFactoryBean()
-	{
+	public LocalSessionFactoryBean sessionFactoryBean() {
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-		try 
-		{
+		try {
 			sessionFactoryBean.setDataSource(dataSource());
 			sessionFactoryBean.setPackagesToScan(ENTITYMANAGER_PACKAGES_TO_SCAN);
 			Properties hibernateProperties = new Properties();
@@ -61,49 +57,38 @@ public class HibernateConfiguration
 			hibernateProperties.put("hibernate.hbm2ddl.auto", HIBERNATE_HBM2DDL_AUTO);
 			hibernateProperties.put("hibernate.current_session_context_class", HIBERNATE_CURRENT_SESSION);
 			sessionFactoryBean.setHibernateProperties(hibernateProperties);
-			
-		} 
-		catch (Exception e) 
-		{
+
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return sessionFactoryBean;
 	}
 
 	@Bean
-	public DataSource dataSource() 
-	{
+	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		try 
-		{
+		try {
 			dataSource.setDriverClassName(DB_DRIVER);
 			dataSource.setUrl(DB_URL);
 			dataSource.setUsername(DB_USERNAME);
 			dataSource.setPassword(DB_PASSWORD);
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return dataSource;
 	}
 
 	@Bean
-	public HibernateTransactionManager transactionManager() 
-	{
+	public HibernateTransactionManager transactionManager() {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(sessionFactoryBean().getObject());
 		return txManager;
 	}
-	
-	 public void addResourceHandlers(ResourceHandlerRegistry registry)
-	 {
-	        registry
-	          .addResourceHandler("/resources/**")
-	          .addResourceLocations("/resources/"); 
-	 }
-	 
-	
+
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+
 	public String getDB_DRIVER() {
 		return DB_DRIVER;
 	}
@@ -175,7 +160,5 @@ public class HibernateConfiguration
 	public void setENTITYMANAGER_PACKAGES_TO_SCAN(String eNTITYMANAGER_PACKAGES_TO_SCAN) {
 		ENTITYMANAGER_PACKAGES_TO_SCAN = eNTITYMANAGER_PACKAGES_TO_SCAN;
 	}
-
-	
 
 }

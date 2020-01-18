@@ -57,7 +57,8 @@
 
 								<div class=" form-group">
 									<label>Select Login As</label> <select class="form-control"
-										name="login_as" id="login_as" value="login_as" class="sel" placeholder="login as">
+										name="login_as" id="login_as" value="login_as" class="sel"
+										placeholder="login as">
 										<option value="">select Login as</option>
 										<option value="school">School</option>
 										<option value="student">Student</option>

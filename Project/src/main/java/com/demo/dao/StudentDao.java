@@ -4,14 +4,13 @@ import java.util.List;
 
 import com.demo.model.Student;
 
-public interface StudentDao 
-{
+public interface StudentDao {
 
 	List<Student> getStudentByEmail(String email);
 
 	void saveStudent(Student std);
 
-	/*List<Student> getStudentList();*/
+	/* List<Student> getStudentList(); */
 
 	void deleteData(int did);
 
@@ -28,9 +27,5 @@ public interface StudentDao
 	void updatePassword(String password, int id);
 
 	List<Student> getStudentListBySchoolId(int schoolId);
-
-
-
-	
 
 }

@@ -7,56 +7,55 @@ import org.hibernate.annotations.Proxy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="student", uniqueConstraints = { @UniqueConstraint(columnNames = "ID"),
-		@UniqueConstraint(columnNames = "EMAIL") }) 
+@Table(name = "student", uniqueConstraints = { @UniqueConstraint(columnNames = "ID"),
+		@UniqueConstraint(columnNames = "EMAIL") })
 @Proxy(lazy = false)
 
-public class Student 
-{
+public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
 	int id;
-	
+
 	@Column(name = "name", nullable = false)
 	String name;
-	
+
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
-	
+
 	@Column(name = "dob", nullable = false)
 	@JsonIgnore
 	String dob;
-	
+
 	@Column(name = "gender", nullable = false)
 	String gender;
-	
+
 	@Column(name = "address", nullable = false)
 	String address;
-	
+
 	@Column(name = "city", nullable = false)
 	String city;
-	
+
 	@Column(name = "state", nullable = false)
 	String state;
-	
+
 	@Column(name = "pincode", nullable = false)
 	private String pincode;
-	
+
 	@Column(name = "contact_no", nullable = false)
 	private String contact_no;
-	
+
 	@Column(name = "doj", nullable = false)
 	@JsonIgnore
 	String doj;
-	
+
 	@Column(name = "password", nullable = false)
 	@JsonIgnore
 	private String password;
-	
+
 	@Column(name = "schoolId", nullable = false)
 	private int schoolId;
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -72,8 +71,6 @@ public class Student
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
 
 	public int getSchoolId() {
 		return schoolId;
@@ -162,12 +159,10 @@ public class Student
 	public void setDoj(String doj) {
 		this.doj = doj;
 	}
-	
-	public Student()
-	{
+
+	public Student() {
 		super();
 	}
-	
 
 	@Override
 	public String toString() {
@@ -193,4 +188,5 @@ public class Student
 		this.doj = doj;
 		this.password = password;
 		this.schoolId = schoolId;
-	}}
+	}
+}

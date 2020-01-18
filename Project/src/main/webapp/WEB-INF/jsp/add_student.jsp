@@ -63,7 +63,8 @@
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">Menu</div>
 			<div class="list-group list-group-flush">
-				<a href="display" class="list-group-item list-group-item-action bg-light">School
+				<a href="display"
+					class="list-group-item list-group-item-action bg-light">School
 					Information</a> <a href="add_student"
 					class="list-group-item list-group-item-action bg-light">Add
 					Student</a> <a href="student_view"

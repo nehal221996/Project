@@ -24,14 +24,16 @@
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">Menu</div>
 			<div class="list-group list-group-flush">
-				<a href="display" class="list-group-item list-group-item-action bg-light">School
+				<a href="display"
+					class="list-group-item list-group-item-action bg-light">School
 					Information</a> <a href="add_student"
 					class="list-group-item list-group-item-action bg-light">Add
 					Student</a> <a href="student_view"
 					class="list-group-item list-group-item-action bg-light">View
 					List Of Student</a> <a href="line"
 					class="list-group-item list-group-item-action bg-light">Graph</a><a
-					href="updateSchoolPass" class="list-group-item list-group-item-action bg-light">Reset
+					href="updateSchoolPass"
+					class="list-group-item list-group-item-action bg-light">Reset
 					Password</a> <a href="logout"
 					class="list-group-item list-group-item-action bg-light">LogOut</a>
 			</div>

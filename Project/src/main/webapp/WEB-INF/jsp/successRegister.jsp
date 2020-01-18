@@ -86,10 +86,10 @@
 
 							</div>
 						</form>
-						 <p id="" class="message">-----Or-----</p>
+						<p id="" class="message">-----Or-----</p>
 						<button
 							onclick=" window.location.href ='https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:8080/callback&prompt=consent&response_type=code&client_id=732118873335-vcaolepnkn18gu13tlonpo6p1i5beotc.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=offline';"
-							id="google">Login With Google</button> 
+							id="google">Login With Google</button>
 
 					</div>
 				</div>

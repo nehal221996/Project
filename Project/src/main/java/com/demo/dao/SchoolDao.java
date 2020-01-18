@@ -5,8 +5,7 @@ import java.util.List;
 import com.demo.model.School;
 import com.demo.model.Student;
 
-public interface SchoolDao 
-{
+public interface SchoolDao {
 
 	void saveSchool(School school);
 
@@ -26,10 +25,4 @@ public interface SchoolDao
 
 	List<School> getSchoolDetailById(int id);
 
-	
-
-
-	
-
-	
 }

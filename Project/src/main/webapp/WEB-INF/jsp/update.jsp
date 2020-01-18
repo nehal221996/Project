@@ -108,7 +108,7 @@
 								<input class="" type="hidden" name="schoolId" value="schoolId"
 									id="" />
 							</div>
-							
+
 							<div class="form-group">
 								<input type="submit" name="submit" value="register"
 									class="submit" id="submit" />

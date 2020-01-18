@@ -262,21 +262,20 @@ public class SchoolController {
 	// download the student list in pdf
 	@GetMapping(value = "/studentdownload", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> customerReport(HttpServletRequest request) throws IOException {
-		
-		   HttpSession session = request.getSession(); 
-		   
-		   System.out.println("studentDownload");
-		   School s=(School) session.getAttribute("school");
-		   int sid=s.getId();
-		 
-		   
-		   /*Student s = (Student) session.getAttribute("s");
-			int sid = s.getId();*/
+
+		HttpSession session = request.getSession();
+
+		System.out.println("studentDownload");
+		School s = (School) session.getAttribute("school");
+		int sid = s.getId();
+
+		/*
+		 * Student s = (Student) session.getAttribute("s"); int sid = s.getId();
+		 */
 		// int sid = s.getSchoolId();
 
 		System.out.println("sid:" + sid);
-		
-		
+
 		List<Student> student = studentService.studentBySchoolId(sid);
 		School school = schoolService.getSchoolById(sid);
 		ByteArrayInputStream bis = PDFGenerator.customerPDFReport(student, school);
@@ -471,43 +470,38 @@ public class SchoolController {
 	@RequestMapping(value = "/linechartdata")
 	@ResponseBody
 	public String getDataFromDisplay1(HttpServletRequest request) throws ParseException {
-		
+
 		HttpSession session = request.getSession();
-		School s=(School) session.getAttribute("school");
-		int sid=s.getId();
-		List<Student> std=studentService.studentBySchoolId(sid);
-		
-		Map<String, Integer> map= new HashMap<String, Integer>();
-		
-		for(Student std1: std)
-		{
-			String date=std1.getDoj();
-			System.out.println("date is:" +date);
-		    DateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd"); // converting string to date 
-		    Date da = (Date) inputFormatter.parse(date);
-		    DateFormat outputFormatter = new SimpleDateFormat("dd-MM-yyyy");// converting date to string again in
-																								// dd-mm-yyyy formate
+		School s = (School) session.getAttribute("school");
+		int sid = s.getId();
+		List<Student> std = studentService.studentBySchoolId(sid);
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+
+		for (Student std1 : std) {
+			String date = std1.getDoj();
+			System.out.println("date is:" + date);
+			DateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd"); // converting string to date
+			Date da = (Date) inputFormatter.parse(date);
+			DateFormat outputFormatter = new SimpleDateFormat("dd-MM-yyyy");// converting date to string again in
+																			// dd-mm-yyyy formate
 			String strDateTime = outputFormatter.format(da);
-			
+
 			System.out.println("String date is : " + strDateTime);
-			
-			if (map.containsKey(strDateTime))
-			{
+
+			if (map.containsKey(strDateTime)) {
 				int count = map.get(strDateTime); // counting no of employee join in same date
 				map.put(strDateTime, count + 1);
-			}
-			else
-			{
+			} else {
 				map.put(strDateTime, 1);
 			}
-			
+
 		}
 
 		JsonArray jsonArrayCategory = new JsonArray();
 		JsonArray jsonArraySeries = new JsonArray();
 		JsonObject jsonObject = new JsonObject();
-		for (Map.Entry<String, Integer> entry : map.entrySet())
-		{
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
 			jsonArrayCategory.add(entry.getKey());
 			jsonArraySeries.add(entry.getValue());
 		}

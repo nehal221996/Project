@@ -145,7 +145,7 @@
 			$("#wrapper").toggleClass("toggled");
 		});
 	</script>
-	
+
 	<script src="/resources/js/studentdownload.js"></script>
 </body>
 </html>

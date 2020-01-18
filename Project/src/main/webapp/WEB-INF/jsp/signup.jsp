@@ -48,25 +48,26 @@
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
 
-						<form action="/school/form" method="POST" id="demoForm"
-						>
+						<form action="/school/form" method="POST" id="demoForm">
 
 							<input type="hidden" name="google_id" id="google_id"
 								value="${google_id}" />
-								
+
 							<div class="form-group">
 								<label>Enter your School Name</label> <input
-									class="form-control" type="text" name="school_name" id=""  value="${school_name }" />
+									class="form-control" type="text" name="school_name" id=""
+									value="${school_name }" />
 							</div>
 
 							<div class="form-group">
 								<label>School Email</label> <input class="form-control"
-									type="email" name="school_email" id=""  value="${school_email }" />
+									type="email" name="school_email" id="" value="${school_email }" />
 							</div>
 
 							<div class="form-group">
 								<label>Password</label> <input class="form-control"
-									type="password" name="school_pass" id="" value="${school_pass }"/>
+									type="password" name="school_pass" id=""
+									value="${school_pass }" />
 							</div>
 
 							<div class="form-group">

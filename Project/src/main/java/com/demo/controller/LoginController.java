@@ -45,15 +45,11 @@ public class LoginController {
 		if ("student".equals(login_as)) {
 			String pass = encryptThisString(password);
 			Student std = studentService.getStudentDetail(email, pass);
-			
-			/*int id = 0;
-			for(Student s : std)
-			{
-				id = s.getId();
-			}*/
-			
-			
-			
+
+			/*
+			 * int id = 0; for(Student s : std) { id = s.getId(); }
+			 */
+
 			if (std != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("student", std);

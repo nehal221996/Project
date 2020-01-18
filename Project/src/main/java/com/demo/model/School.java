@@ -15,37 +15,35 @@ import org.hibernate.annotations.Proxy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="school")
+@Table(name = "school")
 @Proxy(lazy = false)
-public class School 
-{
-	
+public class School {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
-	 int id;
-	
+	int id;
+
 	@Column(name = "school_name", nullable = false)
 	private String school_name;
-	
+
 	@Column(name = "school_email", nullable = false, unique = true)
 	private String school_email;
-	
+
 	@Column(name = "school_pass", nullable = false)
 	@JsonIgnore
 	private String school_pass;
-	
+
 	@Lob
 	@Column(name = "image")
 	private byte[] image;
-	
+
 	@Column(name = "picture_url")
 	private String picture_url;
-	
+
 	@Column(name = "google_id", unique = true)
 	private String google_id;
-	
+
 	@Column(name = "random_key")
 	private String random_key;
 
@@ -112,7 +110,7 @@ public class School
 	public void setRandom_key(String random_key) {
 		this.random_key = random_key;
 	}
-	
+
 	public School(int id, String school_name, String school_email, String school_pass, byte[] image, String picture_url,
 			String google_id, String random_key) {
 		super();
@@ -137,12 +135,5 @@ public class School
 				+ school_pass + ", image=" + Arrays.toString(image) + ", picture_url=" + picture_url + ", google_id="
 				+ google_id + ", random_key=" + random_key + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

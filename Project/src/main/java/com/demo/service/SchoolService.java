@@ -4,8 +4,7 @@ import java.util.List;
 
 import com.demo.model.School;
 
-public interface SchoolService 
-{
+public interface SchoolService {
 
 	void saveSchool(School school);
 
@@ -24,13 +23,5 @@ public interface SchoolService
 	boolean findSchoolBygoogle(String google_id, String email);
 
 	List<School> getSchoolDetailById(int id);
-
-	
-
-	
-
-
-
-	
 
 }
