@@ -6,10 +6,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Home</title>
@@ -82,7 +87,8 @@
 							<div class="col-md-12">
 
 								<h3>Details</h3>
-								<form action="updatePassword" method="POST" id="demoForm">
+								<form action="updatePassword" method="POST"
+									id="formCheckPassword">
 
 									<!-- <div class="form-group">
 						<label>Old Password</label>
@@ -93,14 +99,14 @@
 									<br>
 									<div class="form-group">
 										<label>New Password</label> <input class="form-control"
-											type="password" name="pass" id="password">
-										<div id="password_error" style="color: red;"></div>
+											type="password" name="password" id="password">
+
 									</div>
 
 									<div class="form-group">
-										<br> <label>Confirm Password</label> <input
-											class="form-control" type="password" id="con_password"
-											name="con_pass">
+										<br> <label>Confirm Password</label><input
+											class="form-control" type="password" id="cfmPassword"
+											name="cfmPassword">
 									</div>
 									<br> <input class="" type="submit" name="submit"
 										value="reset" id="submit">
@@ -115,27 +121,58 @@
 	</div>
 
 
-
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-
-
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
 			e.preventDefault();
 			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$("#formCheckPassword").validate({
+				/*
+				 * here we define the rules for the password and confirmpassword input
+				 * type field in the html page.
+				 */
+
+				rules : {
+					password : {
+						required : true,
+						minlength : 6,
+						maxlength : 10,
+					},
+					cfmPassword : {
+						required : true,
+						equalTo : "#password",
+						minlength : 6,
+						maxlength : 10
+					}
+				},
+				/*
+				 * here we define the messages for the password and confirmpassword in
+				 * case the user does not fulfill the rules defined above.
+				 */
+				messages : {
+					password : {
+						required : "The password is required",
+						minlength : "Minimum 6 characters",
+						maxlength : "Maximum 10 characters"
+					},
+					cfmPassword : {
+						required : "Confirm password required",
+						equalTo : "Not equal",
+						minlength : "Minimum 6 characters",
+						maxlength : "Maximum 10 characters"
+					}
+				},
+
+				submitHandler : function(form) {
+					form.submit();
+				}
+			});
+
 		});
 	</script>
 </body>

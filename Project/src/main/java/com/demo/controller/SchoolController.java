@@ -371,7 +371,7 @@ public class SchoolController {
 	}
 
 	@RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
-	public ModelAndView updatePass(HttpServletRequest request, Model model, @RequestParam("pass") String new_password) {
+	public ModelAndView updatePass(HttpServletRequest request, Model model, @RequestParam("password") String new_password) {
 
 		HttpSession session = request.getSession();
 		Student student = (Student) session.getAttribute("student");
