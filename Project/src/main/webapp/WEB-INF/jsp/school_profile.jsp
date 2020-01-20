@@ -13,7 +13,6 @@
 </head>
 <body>
 
-
 	<div class="d-flex" id="wrapper">
 
 		<!-- Sidebar -->
@@ -35,8 +34,6 @@
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
-
-
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">

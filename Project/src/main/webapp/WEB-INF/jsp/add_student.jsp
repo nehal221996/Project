@@ -9,9 +9,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
@@ -51,18 +51,14 @@
 <link href="/resources/css/simple-sidebar.css" rel="stylesheet">
  -->
 <style>
-  .error{
-    color: red;
-  }
-  
+.error {
+	color: red;
+}
 </style>
 <title>Student Registration</title>
 
 </head>
 <body>
-
-
-
 
 	<div class="d-flex" id="wrapper">
 
@@ -216,6 +212,85 @@
 								</table>
 
 
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
+
+
+	<script type="text/javascript">
+		$(function() {
+			// Initialize form validation on the registration form.
+			// It has the name attribute "registration"
+			$("#demoForm")
+					.validate(
+							{
+								// Specify validation rules
+								rules : {
+									name : "required",
+									email : {
+										required : true,
+										// Specify that email should be validated
+										// by the built-in "email" rule
+										email : true
+									},
+									dob : "required",
+									gender : "required",
+									address : "required",
+									state : "required",
+									city : "required",
+									pincode : "required",
+									contact_no : "required",
+									doj : "required",
+									password : {
+										required : true,
+										minlength : 5
+									}
+								},
+								// Specify validation error messages
+								messages : {
+									name : "Please enter your user name",
+									email : {
+										required : "Please provide a email address",
+										email : "Please enter valid email address"
+									},
+									dob : "Please enter date of birth name",
+									gender : "Please select your gender",
+									address : "Please enter address",
+									state : "Please enter state",
+									city : "Please enter city",
+									pincode : "Please enter pincode",
+									contact_no : "Please enter your mobile number",
+									doj : "Please enter joining date",
+									password : {
+										required : "Please provide a password",
+										minlength : "Your password must be at least 5 characters long"
+									}
+
+								},
+								// Make sure the form is submitted to the destination defined
+								// in the "action" attribute of the form when valid
+								submitHandler : function(form) {
+									form.submit();
+								}
+							});
+		});
+	</script>
+</body>
+</html>
+
+
 
 
 
@@ -291,92 +366,4 @@
 										<input type="submit" name="submit" value="register"
 											class="submit" id="submit" />
 									</div> -->
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
-	<!-- Menu Toggle Script -->
-	<script>
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-	</script>
-
-
-	<script type="text/javascript">
-		$(function() {
-			// Initialize form validation on the registration form.
-			// It has the name attribute "registration"
-			$("#demoForm")
-					.validate(
-							{
-								// Specify validation rules
-								rules : {
-									name : "required",
-									email : {
-										required : true,
-										// Specify that email should be validated
-										// by the built-in "email" rule
-										email : true
-									},
-									dob : "required",
-									gender : "required",
-									address : "required",
-									state : "required",
-									city : "required",
-									pincode : "required",
-									contact_no : "required",
-									doj : "required",
-									password : {
-										required : true,
-										minlength : 5
-									}
-								},
-								// Specify validation error messages
-								messages : {
-									name : "Please enter your user name",
-									email : {
-										required : "Please provide a email address",
-										email : "Please enter valid email address"
-									},
-									dob : "Please enter date of birth name",
-									gender : "Please select your gender",
-									address : "Please enter address",
-									state : "Please enter state",
-									city : "Please enter city",
-									pincode : "Please enter pincode",
-									contact_no : "Please enter your mobile number",
-									doj : "Please enter joining date",
-									password : {
-										required : "Please provide a password",
-										minlength : "Your password must be at least 5 characters long"
-									}
-
-								},
-								// Make sure the form is submitted to the destination defined
-								// in the "action" attribute of the form when valid
-								submitHandler : function(form) {
-									form.submit();
-								}
-							});
-		});
-	</script>
-</body>
-</html>
-
-
 

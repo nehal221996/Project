@@ -10,17 +10,17 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Admin Home</title>
 
 <style>
-  .error{
-    color: red;
-  }
-  
+.error {
+	color: red;
+}
 </style>
 
 </head>
@@ -143,9 +143,9 @@
 										<form:input class="form-control" type="date" path="doj"
 											name="doj" />
 									</div>
-									
+
 									<form:hidden path="password" />
-									
+
 									<%-- <div class="form-group">
 										<form:label path="password">Password</form:label>
 										<form:hidden class="form-control" path="password"

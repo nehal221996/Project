@@ -178,7 +178,7 @@ public class SchoolController {
 		std.setDoj(doj);
 		std.setPassword(encryptThisString(password));
 		std.setSchoolId(sid);
-		/* std.setSchool_id(school_id); */
+		// std.setSchool_id(school_id); 
 
 		studentService.saveStudent(std);
 		model.addObject("student", s);

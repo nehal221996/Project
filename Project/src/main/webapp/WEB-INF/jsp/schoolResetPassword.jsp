@@ -17,10 +17,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Home</title>
 <style>
-  .error{
-    color: red;
-  }
-  
+.error {
+	color: red;
+}
 </style>
 
 </head>
@@ -139,7 +138,7 @@
 				 * here we define the rules for the password and confirmpassword input
 				 * type field in the html page.
 				 */
-				
+
 				rules : {
 					pass : {
 						required : true,
