@@ -108,7 +108,7 @@
 									<th>School Id</th>
 									<th>School Name</th>
 									<th>School Email</th>
-									<th>Image</th>
+									<!-- <th>Image</th> -->
 									<!-- <th colspan="2">Action</th> -->
 								</tr>
 								<%-- <c:forEach items="${sdata}" var="dt"> --%>
@@ -116,10 +116,7 @@
 									<td>${schoolId}</td>
 									<td>${school.school_name}</td>
 									<td>${school.school_email}</td>
-									<td><img style="height: 200px; width: 200px"
-										src="data:image/png;base64,${Image }" /> <%-- 	<td><a href="delete?did=${dt.id}">Delete</a></td> --%>
-										<!-- <td><a href="add_student">Add Student</a></td>
-									<td><a href="student_view">View List Of Student</a></td> -->
+									<%-- <td><img style="height: 200px; width: 200px"/>${school.image }</td>  --%>
 								</tr>
 								<%-- </c:forEach> --%>
 

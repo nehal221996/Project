@@ -442,11 +442,23 @@ public class SchoolController {
 			int schoolId = student.getSchoolId();
 
 			System.out.println(schoolId);
-			/* List<School> s = schoolService.getSchoolDetailById(schoolId); */
+			List<School> s = schoolService.getSchoolDetailById(schoolId); 
+			System.out.print(s);
+			if(s.size()>0)
+			{
+					model.addObject("school", s.get(0)); 
+					//String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+					model.addObject("student", student);
+					//model.addObject("Image", base64Encoded);
+					model.setViewName("schoolInfo");
+			}
+			else
+			{
+				model.addObject("schoolId", schoolId);
+			}
 			model.addObject("schoolId", schoolId);
-			/* model.addObject("school", s); */
-			model.addObject("student", student);
-			model.setViewName("schoolInfo");
+			
+		   
 		}
 		return model;
 	}
