@@ -16,7 +16,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Home</title>
 
-
+<style>
+  .error{
+    color: red;
+  }
+  
+</style>
 
 </head>
 <body>

@@ -50,8 +50,14 @@
 
 <link href="/resources/css/simple-sidebar.css" rel="stylesheet">
  -->
-
+<style>
+  .error{
+    color: red;
+  }
+  
+</style>
 <title>Student Registration</title>
+
 </head>
 <body>
 
