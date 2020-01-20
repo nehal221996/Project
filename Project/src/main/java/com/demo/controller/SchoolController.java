@@ -193,7 +193,7 @@ public class SchoolController {
 			@RequestParam("gender") String gender, @RequestParam("address") String address,
 			@RequestParam("city") String city, @RequestParam("state") String state,
 			@RequestParam("pincode") String pincode, @RequestParam("contact_no") String contact_no,
-			@RequestParam("doj") String doj, @RequestParam("password") String password) {
+			@RequestParam("doj") String doj,@RequestParam("schoolId") int schoolId,@RequestParam("password") String password){
 		ModelAndView model = new ModelAndView();
 		Student std = new Student();
 
@@ -211,14 +211,16 @@ public class SchoolController {
 		std.setPincode(pincode);
 		std.setContact_no(contact_no);
 		std.setDoj(doj);
-		std.setPassword(encryptThisString(password));
-		// std.setSchoolId(schoolId);
-		/* std.setSchool_id(school_id); */
-
-		studentService.updateDataById(std);
-		model.addObject("std", std);
-		model.setViewName("redirect:profile");
-
+		std.setPassword(password);
+		std.setSchoolId(schoolId);
+		
+		
+			studentService.updateDataById(std);
+			model.addObject("std", std);
+			model.setViewName("student_profile");
+			String msg = "Successfully Updated";
+			model.addObject("msg", msg);
+		
 		return model;
 	}
 
@@ -299,7 +301,7 @@ public class SchoolController {
 			model.setViewName("redirect:index");
 		} else {
 			int schoolId = student.getSchoolId();
-			model.addObject("school", school);
+			//model.addObject("school", school);
 			model.addObject("student", student);
 
 			// model.addObject("student", school);

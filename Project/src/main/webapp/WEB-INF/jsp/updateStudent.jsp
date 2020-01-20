@@ -143,17 +143,20 @@
 										<form:input class="form-control" type="date" path="doj"
 											name="doj" />
 									</div>
-
-									<div class="form-group">
-										<%-- <form:label path="password">Password</form:label> --%>
+									
+									<form:hidden path="password" />
+									
+									<%-- <div class="form-group">
+										<form:label path="password">Password</form:label>
 										<form:hidden class="form-control" path="password"
 											name="password" />
-									</div>
+									</div> --%>
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<input class="" type="hidden" name="schoolId" value="schoolId"
 											id="" />
-									</div>
+									</div> -->
+									<form:hidden path="schoolId" />
 
 									<div class="form-group">
 										<input type="submit" name="submit" value="update"
