@@ -162,7 +162,7 @@
 					},
 					cfmPassword : {
 						required : "Confirm password required",
-						equalTo : "Not equal",
+						equalTo : "Password not match",
 						minlength : "Minimum 6 characters",
 						maxlength : "Maximum 10 characters"
 					}
