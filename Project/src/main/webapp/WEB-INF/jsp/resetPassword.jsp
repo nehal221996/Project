@@ -7,22 +7,17 @@
 <html>
 <head>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.validate.min.js"></script>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Home</title>
 
 <style>
-  .error{
-    color: red;
-  }
-  
+.error {
+	color: red;
+}
 </style>
 </head>
 <body>
@@ -65,12 +60,26 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link"
+
+					<li class="nav-item active">
+						<button type="button" class="btn btn-default navbar-btn">
+							<a href="registration">Register here</a>
+						</button>
+					</li>
+					<li class="nav-item active">
+						<button type="button" class="btn btn-default navbar-btn">
+							<a href="/school/index">Login here</a>
+						</button>
+					</li>
+
+
+
+					<!-- <li class="nav-item active"><a class="nav-link"
 						href="registration">Register here <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item active"><a class="nav-link"
 						href="/school/index">Login here <span class="sr-only">(current)</span>
-					</a></li>
+					</a></li> -->
 
 				</ul>
 			</div>

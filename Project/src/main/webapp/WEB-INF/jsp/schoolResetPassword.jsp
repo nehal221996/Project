@@ -6,12 +6,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.validate.min.js"></script>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -21,7 +19,21 @@
 	color: red;
 }
 </style>
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
 </head>
 <body>
 
@@ -31,30 +43,28 @@
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">Menu</div>
 			<div class="list-group list-group-flush">
-				<a href="display"
+				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
-					Information</a> <a href="add_student"
+					Information</a> -->
+				<a href="add_student"
 					class="list-group-item list-group-item-action bg-light">Add
 					Student</a> <a href="student_view"
 					class="list-group-item list-group-item-action bg-light">View
 					List Of Student</a> <a href="line"
 					class="list-group-item list-group-item-action bg-light">Graph</a><a
-					href="updateSchoolPass"
+					href="schoolResetPassword"
 					class="list-group-item list-group-item-action bg-light">Reset
-					Password</a> <a href="logout"
-					class="list-group-item list-group-item-action bg-light">LogOut</a>
+					Password</a>
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
-
-
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
 			<nav
 				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-			<button class="btn btn-primary" id="menu-toggle">Menu</button>
+			<button class="btn" id="menu-toggle"><i class="fa fa-bars"></i></button>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -65,13 +75,26 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link"
+
+
+					<!-- <li class="nav-item active"><a class="nav-link"
 						href="registration">Register here <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item active"><a class="nav-link"
 						href="/school/index">Login here <span class="sr-only">(current)</span>
-					</a></li>
-
+					</a></li> -->
+					<!-- <li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/school/index">Login Here</a> <a
+								class="dropdown-item" href="display">School Profile</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="logout">LogOut</a>
+						</div></li>
 				</ul>
 			</div>
 			</nav>
@@ -88,7 +111,7 @@
 							<div class="col-md-12">
 
 								<h3>Details</h3>
-								<form action="schoolResetPassword" method="POST"
+								<form action="updateSchoolPass" method="POST"
 									id="formCheckPassword">
 
 									<!-- <div class="form-group">
@@ -100,13 +123,13 @@
 									<br>
 									<div class="form-group">
 										<label>New Password</label> <input class="form-control"
-											type="password" name="pass" id="password">
+											type="password" name="password" id="password">
 									</div>
 
 									<div class="form-group">
 										<br> <label>Confirm Password</label> <input
 											class="form-control" type="password" id="con_password"
-											name="con_pass">
+											name="con_password">
 									</div>
 									<br> <input class="" type="submit" name="submit"
 										value="reset" id="submit">
@@ -140,15 +163,15 @@
 				 */
 
 				rules : {
-					pass : {
+					password : {
 						required : true,
-						minlength : 6,
+						minlength : 5,
 						maxlength : 10,
 					},
-					con_pass : {
+					con_password : {
 						required : true,
-						equalTo : "#pass",
-						minlength : 6,
+						equalTo : "#password",
+						minlength : 5,
 						maxlength : 10
 					}
 				},
@@ -157,15 +180,15 @@
 				 * case the user does not fulfill the rules defined above.
 				 */
 				messages : {
-					pass : {
+					password : {
 						required : "The password is required",
-						minlength : "Minimum 6 characters",
+						minlength : "Minimum 5 characters",
 						maxlength : "Maximum 10 characters"
 					},
-					con_pass : {
+					con_password : {
 						required : "Confirm password required",
 						equalTo : "Password not match",
-						minlength : "Minimum 6 characters",
+						minlength : "Minimum 5 characters",
 						maxlength : "Maximum 10 characters"
 					}
 				},
@@ -177,6 +200,7 @@
 
 		});
 	</script>
+	
 </body>
 </html>
 

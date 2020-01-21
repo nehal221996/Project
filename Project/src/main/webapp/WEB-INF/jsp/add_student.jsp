@@ -6,55 +6,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.validate.min.js"></script>
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
-<!-- Bootstrap CSS -->
-<!-- Latest compiled and minified CSS -->
-<!-- validation -->
-<!-- <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous"> -->
-
-
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
-
-
-
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-
-
-<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-
-<link href="/resources/css/simple-sidebar.css" rel="stylesheet">
- -->
 <style>
 .error {
 	color: red;
 }
 </style>
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+
 <title>Student Registration</title>
 
 </head>
@@ -66,9 +46,9 @@
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">Menu</div>
 			<div class="list-group list-group-flush">
-				<a href="display"
+				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
-					Information</a> <a href="add_student"
+					Information</a> --> <a href="add_student"
 					class="list-group-item list-group-item-action bg-light">Add
 					Student</a> <a href="student_view"
 					class="list-group-item list-group-item-action bg-light">View
@@ -76,20 +56,17 @@
 					class="list-group-item list-group-item-action bg-light">Graph</a><a
 					href="schoolResetPassword"
 					class="list-group-item list-group-item-action bg-light">Reset
-					Password</a> <a href="logout"
-					class="list-group-item list-group-item-action bg-light">LogOut</a>
+					Password</a>
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
-
-
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
 			<nav
 				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-			<button class="btn btn-primary" id="menu-toggle">Menu</button>
+			<button class="btn" id="menu-toggle"><i class="fa fa-bars"></i></button>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -100,12 +77,19 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link"
-						href="registration">Register here <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="/school/index">Login here <span class="sr-only">(current)</span>
-					</a></li>
+					
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/school/index">Login Here</a> <a
+								class="dropdown-item" href="display">School Profile</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="logout">LogOut</a>
+						</div></li>
 
 				</ul>
 			</div>
@@ -229,6 +213,7 @@
 	</script>
 
 
+
 	<script type="text/javascript">
 		$(function() {
 			// Initialize form validation on the registration form.
@@ -287,6 +272,7 @@
 							});
 		});
 	</script>
+
 </body>
 </html>
 
@@ -297,7 +283,7 @@
 
 
 
-								<!-- <div class="form-group">
+<!-- <div class="form-group">
 										<input type="hidden" name="id" value="id">
 									</div>
 

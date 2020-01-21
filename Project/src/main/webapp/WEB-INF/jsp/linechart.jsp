@@ -6,23 +6,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>LineChart</title>
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
 </head>
 <body>
 
 
-	<div class="d-flex" id="wrapper">
+<div class="d-flex" id="wrapper">
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">Menu</div>
 			<div class="list-group list-group-flush">
-				<a href="display"
+				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
-					Information</a> <a href="add_student"
+					Information</a> -->
+				<a href="add_student"
 					class="list-group-item list-group-item-action bg-light">Add
 					Student</a> <a href="student_view"
 					class="list-group-item list-group-item-action bg-light">View
@@ -30,20 +45,17 @@
 					class="list-group-item list-group-item-action bg-light">Graph</a><a
 					href="schoolResetPassword"
 					class="list-group-item list-group-item-action bg-light">Reset
-					Password</a> <a href="logout"
-					class="list-group-item list-group-item-action bg-light">LogOut</a>
+					Password</a>
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
-
-
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
 			<nav
 				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-			<button class="btn btn-primary" id="menu-toggle">Menu</button>
+			<button class="btn" id="menu-toggle"><i class="fa fa-bars"></i></button>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -54,12 +66,26 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link"
+
+
+					<!-- <li class="nav-item active"><a class="nav-link"
 						href="registration">Register here <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item active"><a class="nav-link"
 						href="/school/index">Login here <span class="sr-only">(current)</span>
-					</a></li>
+					</a></li> -->
+					<!-- <li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/school/index">Login Here</a> <a
+								class="dropdown-item" href="display">School Profile</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="logout">LogOut</a>
+						</div></li>
 				</ul>
 			</div>
 			</nav>

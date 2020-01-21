@@ -178,10 +178,12 @@ public class SchoolController {
 		std.setDoj(doj);
 		std.setPassword(encryptThisString(password));
 		std.setSchoolId(sid);
-		// std.setSchool_id(school_id); 
+		// std.setSchool_id(school_id);
 
 		studentService.saveStudent(std);
 		model.addObject("student", s);
+		String msg = "Student is Successfully Registered";
+		model.addObject("msg", msg);
 		model.setViewName("redirect:display");
 
 		return model;
@@ -193,7 +195,8 @@ public class SchoolController {
 			@RequestParam("gender") String gender, @RequestParam("address") String address,
 			@RequestParam("city") String city, @RequestParam("state") String state,
 			@RequestParam("pincode") String pincode, @RequestParam("contact_no") String contact_no,
-			@RequestParam("doj") String doj,@RequestParam("schoolId") int schoolId,@RequestParam("password") String password){
+			@RequestParam("doj") String doj, @RequestParam("schoolId") int schoolId,
+			@RequestParam("password") String password) {
 		ModelAndView model = new ModelAndView();
 		Student std = new Student();
 
@@ -213,44 +216,63 @@ public class SchoolController {
 		std.setDoj(doj);
 		std.setPassword(password);
 		std.setSchoolId(schoolId);
-		
-		
-			studentService.updateDataById(std);
-			model.addObject("std", std);
-			model.setViewName("student_profile");
-			String msg = "Successfully Updated";
-			model.addObject("msg", msg);
-		
+
+		studentService.updateDataById(std);
+		model.addObject("std", std);
+		model.setViewName("student_profile");
+		String msg = "Successfully Updated";
+		model.addObject("msg", msg);
+
 		return model;
 	}
 
+	/*
+	 * @RequestMapping(value = "/student_view", method = RequestMethod.GET) public
+	 * ModelAndView getEmployee(HttpServletRequest request) { ModelAndView model =
+	 * new ModelAndView(); HttpSession session = request.getSession(); School school
+	 * = (School) session.getAttribute("school");
+	 * 
+	 * if (school == null) { model.setViewName("redirect:index");
+	 * 
+	 * } else {
+	 * 
+	 * List<Student> stddata = studentService.getStudentList();
+	 * System.out.println("stddata"); System.out.println(stddata);
+	 * model.addObject("stddata", stddata); model.addObject("school", school);
+	 * model.setViewName("student_view");
+	 * 
+	 * 
+	 * int schoolId = school.getId(); System.out.println("sid" + schoolId);
+	 * List<Student> stddata = studentService.getStudentListBySchoolId(schoolId);
+	 * System.out.println("stddata"); System.out.println(stddata);
+	 * model.addObject("stddata", stddata); model.addObject("school", school);
+	 * model.setViewName("student_view"); } return model; }
+	 */
+
+	// viewing student associated with the school
 	@RequestMapping(value = "/student_view", method = RequestMethod.GET)
-	public ModelAndView getEmployee(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
+	public ModelAndView getStudent(HttpServletRequest request) {
+
 		HttpSession session = request.getSession();
 		School school = (School) session.getAttribute("school");
-
 		if (school == null) {
-			model.setViewName("redirect:index");
+			return new ModelAndView("redirect:index");
 
 		} else {
-			/*
-			 * List<Student> stddata = studentService.getStudentList();
-			 * System.out.println("stddata"); System.out.println(stddata);
-			 * model.addObject("stddata", stddata); model.addObject("school", school);
-			 * model.setViewName("student_view");
-			 */
-
+			ModelAndView model = new ModelAndView();
 			int schoolId = school.getId();
 			System.out.println("sid" + schoolId);
-			List<Student> stddata = studentService.getStudentListBySchoolId(schoolId);
-			System.out.println("stddata");
-			System.out.println(stddata);
-			model.addObject("stddata", stddata);
+			List<Student> data = studentService.getStudentListBySchoolId(schoolId);
+			System.out.println("data");
+			System.out.println(data);
+			model.addObject("data", data);
 			model.addObject("school", school);
 			model.setViewName("student_view");
+
+			return model;
+
 		}
-		return model;
+
 	}
 
 	@RequestMapping("/delete")
@@ -301,7 +323,7 @@ public class SchoolController {
 			model.setViewName("redirect:index");
 		} else {
 			int schoolId = student.getSchoolId();
-			//model.addObject("school", school);
+			// model.addObject("school", school);
 			model.addObject("student", student);
 
 			// model.addObject("student", school);
@@ -373,7 +395,8 @@ public class SchoolController {
 	}
 
 	@RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
-	public ModelAndView updatePass(HttpServletRequest request, Model model, @RequestParam("password") String new_password) {
+	public ModelAndView updatePass(HttpServletRequest request, Model model,
+			@RequestParam("password") String new_password) {
 
 		HttpSession session = request.getSession();
 		Student student = (Student) session.getAttribute("student");
@@ -406,7 +429,7 @@ public class SchoolController {
 
 	@RequestMapping(value = "/updateSchoolPass", method = RequestMethod.POST)
 	public ModelAndView updateSchoolPass(HttpServletRequest request, Model model,
-			@RequestParam("pass") String new_password) {
+			@RequestParam("password") String new_password) {
 
 		HttpSession session = request.getSession();
 		School school = (School) session.getAttribute("school");
@@ -418,7 +441,7 @@ public class SchoolController {
 		String msg = "Your Password is Successfully Reset";
 		model.addAttribute("msg", msg);
 		ModelAndView page = new ModelAndView();
-		page.setViewName("redirect:display");
+		page.setViewName("school_profile");
 		return page;
 
 	}
@@ -444,23 +467,19 @@ public class SchoolController {
 			int schoolId = student.getSchoolId();
 
 			System.out.println(schoolId);
-			List<School> s = schoolService.getSchoolDetailById(schoolId); 
+			List<School> s = schoolService.getSchoolDetailById(schoolId);
 			System.out.print(s);
-			if(s.size()>0)
-			{
-					model.addObject("school", s.get(0)); 
-					//String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
-					model.addObject("student", student);
-					//model.addObject("Image", base64Encoded);
-					model.setViewName("schoolInfo");
-			}
-			else
-			{
+			if (s.size() > 0) {
+				model.addObject("school", s.get(0));
+				// String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+				model.addObject("student", student);
+				// model.addObject("Image", base64Encoded);
+				model.setViewName("schoolInfo");
+			} else {
 				model.addObject("schoolId", schoolId);
 			}
 			model.addObject("schoolId", schoolId);
-			
-		   
+
 		}
 		return model;
 	}
