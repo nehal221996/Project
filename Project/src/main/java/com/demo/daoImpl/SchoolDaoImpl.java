@@ -130,4 +130,19 @@ public class SchoolDaoImpl implements SchoolDao {
 		return s;
 	}
 
+	@Override
+	public int updateRandomKey(String email, String randomKey) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		System.out.println(email);
+		System.out.println(randomKey);
+		Query query = session.createQuery("update School set random_key=:key where school_email=:email");
+		query.setParameter("key", randomKey);
+		query.setParameter("email", email);
+		int result = query.executeUpdate();
+		// Commit the transaction and close the session
+		t.commit();
+		return result;
+	}
+
 }

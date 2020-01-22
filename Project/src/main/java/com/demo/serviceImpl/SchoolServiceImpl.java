@@ -52,4 +52,10 @@ public class SchoolServiceImpl implements SchoolService {
 		return schoolDao.getSchoolDetailById(id);
 	}
 
+	@Override
+	public int updateRandomKey(String email, String randomKey) {
+		return schoolDao.updateRandomKey(email,randomKey);
+
+	}
+
 }

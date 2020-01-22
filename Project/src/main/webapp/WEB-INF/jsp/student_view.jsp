@@ -1,4 +1,6 @@
 <%@include file="/resources/header/login_head.jsp"%>
+<%@include file="/resources/header/employee_viewTable.jsp"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -109,7 +111,7 @@
 						<div class="panel-body"></div>
 						<div class="panel-heading">Student Detail</div>
 						<div class="panel-body"></div>
-						<div class="col-md-4">
+						<div class="col-md-12">
 
 							<!-- Table -->
 							<table id="example" class="display" style="width: 100%">
@@ -126,9 +128,10 @@
 										<th>City</th>
 										<th>Pincode</th>
 										<th>Mobile No</th>
-										<th>Date of Joining</th>
+										<th>DateofJoining</th>
+										
 										<!-- <th>Password</th> -->
-										<th colspan="2">Action</th>
+										
 									</tr>
 								</thead>
 								<tfoot>
@@ -143,8 +146,10 @@
 										<th>City</th>
 										<th>Pincode</th>
 										<th>Mobile No</th>
-										<th>Date of Joining</th>
-										<td><a href="delete?did=${dt.id}">Delete</a></td>
+										<th>DateofJoining</th>
+										
+										<%-- <td><a href="delete?did=${dt.id}">Delete</a></td> --%>
+										
 									</tr>
 								</tfoot>
 
@@ -160,9 +165,9 @@
 
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/js/datatable/jquery-3.3.1.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
@@ -170,12 +175,45 @@
 			$("#wrapper").toggleClass("toggled");
 		});
 	</script>
-	<script src="/resources/js/datatable/datatable.js"></script>
+
 	<script src="/resources/js/datatable/jquery.dataTables.min.js"></script>
-	<script src="/resources/js/datatable/jquery-3.3.1.js"></script>
+
+	<script src="/resources/js/datatable/datatable.js"></script>
 	<script src="/resources/js/studentdownload.js"></script>
 </body>
 </html>
 
+<%-- <tr>
+									<th>Id</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>Date Of Birth</th>
+									<th>Gender</th>
+									<th>Address</th>
+									<th>State</th>
+									<th>City</th>
+									<th>Pincode</th>
+									<th>Mobile No</th>
+									<th>Date of Joining</th>
+									<!-- <th>Password</th> -->
+									<th colspan="2">Action</th>
+								</tr>
+								<c:forEach items="${stddata}" var="dt">
+									<tr>
+										<td>${dt.id}</td>
+										<td>${dt.name}</td>
+										<td>${dt.email}</td>
+										<td>${dt.dob}</td>
+										<td>${dt.gender}</td>
+										<td>${dt.address}</td>
+										<td>${dt.city}</td>
+										<td>${dt.state}</td>
+										<td>${dt.pincode}</td>
+										<td>${dt.contact_no}</td>
+										<td>${dt.doj}</td>
+										<td>${dt.password}</td> 
+										<td><a href="delete?did=${dt.id}">Delete</a></td>
 
-
+									</tr>
+								</c:forEach>
+ --%>

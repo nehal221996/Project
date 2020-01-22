@@ -105,31 +105,40 @@
 						<div class="panel-body">
 
 							<!-- Table -->
-							
-								<table class="table">
-									<!-- <table align="center" border="1"> -->
-									<tr>
-										<th>School Id</th>
-										<th>School Name</th>
-										<th>School Email</th>
-										<th>Image</th>
-										<!-- <th colspan="2">Action</th> -->
-									</tr>
-									<%-- <c:forEach items="${sdata}" var="dt"> --%>
-									<tr>
-										<td>${school.id}</td>
-										<td>${school.school_name}</td>
-										<td>${school.school_email}</td>
-										<td><img style="height: 200px; width: 200px"
-											src="data:image/png;base64,${Image }" /> <%-- 	<td><a href="delete?did=${dt.id}">Delete</a></td> --%>
-											<!-- <td><a href="add_student">Add Student</a></td>
+
+							<table class="table">
+								<!-- <table align="center" border="1"> -->
+								<tr>
+									<th>School Id</th>
+									<th>School Name</th>
+									<th>School Email</th>
+									<th>Image</th>
+									<th>Random Key</th>
+									
+									<!-- <th colspan="2">Action</th> -->
+								</tr>
+								<%-- <c:forEach items="${sdata}" var="dt"> --%>
+								<tr>
+									<td>${school.id}</td>
+									<td>${school.school_name}</td>
+									<td>${school.school_email}</td>
+									<td><img style="height: 200px; width: 200px"
+										src="data:image/png;base64,${Image }"/> </td>
+									<td>${school.random_key }</td>
+									
+										
+										<%-- 	<td><a href="delete?did=${dt.id}">Delete</a></td> --%>
+										<!-- <td><a href="add_student">Add Student</a></td>
 									<td><a href="student_view">View List Of Student</a></td> -->
-									</tr>
-									<%-- </c:forEach> --%>
+								</tr>
+								<%-- </c:forEach> --%>
 
 
-								</table>
+							</table>
+
 							
+							<button type="submit" class="btn btn-primary" id="btnAddkey">Generate
+								Random Key</button>
 						</div>
 						<!-- </table> -->
 					</div>
@@ -139,9 +148,9 @@
 		<!-- /#page-content-wrapper -->
 
 	</div>
-
+	<script src="/resources/js/validation/random_key.js"></script>
 	<%@include file="/resources/header/dropDown.jsp"%>
-
+	
 
 	<!-- Menu Toggle Script -->
 	<script>

@@ -1,6 +1,7 @@
 package com.demo.model;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,8 +45,13 @@ public class School {
 	@Column(name = "google_id", unique = true)
 	private String google_id;
 
-	@Column(name = "random_key")
-	private String random_key;
+	/*@Column(name = "random_key")
+	private String random_key;*/
+	
+	
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @Column(name = "random_key",unique = true)
+	 private String random_key;
 
 	public int getId() {
 		return id;
@@ -102,6 +108,9 @@ public class School {
 	public void setGoogle_id(String google_id) {
 		this.google_id = google_id;
 	}
+
+	
+	
 
 	public String getRandom_key() {
 		return random_key;

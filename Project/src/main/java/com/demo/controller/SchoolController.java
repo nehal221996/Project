@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,7 @@ import org.springframework.scheduling.config.ScheduledTaskHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -126,6 +128,7 @@ public class SchoolController {
 			int schoolId = school.getId();
 			System.out.println(schoolId);
 			m.addObject("school", school);
+			System.out.println(school);
 			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
 			m.addObject("Image", base64Encoded);
 			m.setViewName("school_profile");
@@ -543,6 +546,28 @@ public class SchoolController {
 		// model.addObject("school", school);
 		return jsonObject.toString();
 
+	}
+
+	// random unique key generation
+	@RequestMapping(value = "/schoolrandom_key", method = RequestMethod.POST)
+	public @ResponseBody String randomKeyGenerator(HttpServletRequest request) 
+	{
+		HttpSession session=request.getSession();
+		School school=(School) session.getAttribute("school");
+		System.out.println("test");
+		if(school != null)
+		{
+			String email=school.getSchool_email();
+			String uniqueId=UUID.randomUUID().toString();
+			schoolService.updateRandomKey(email,uniqueId);
+			System.out.println("randomKey" +uniqueId);
+			return uniqueId;
+		}
+		else
+		{
+			return("/logout");
+		}
+		
 	}
 
 	public static String encryptThisString(String input) {

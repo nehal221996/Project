@@ -24,4 +24,6 @@ public interface SchoolService {
 
 	List<School> getSchoolDetailById(int id);
 
+	int updateRandomKey(String email, String randomKey);
+
 }
