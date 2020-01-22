@@ -145,4 +145,16 @@ public class SchoolDaoImpl implements SchoolDao {
 		return result;
 	}
 
+	@Override
+	public List<School> getSchoolByToken(String token) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = "  from School  where random_key=:token";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("token", token);
+		List<School> school = query.list();
+		t.commit();
+		return school;
+	}
+
 }

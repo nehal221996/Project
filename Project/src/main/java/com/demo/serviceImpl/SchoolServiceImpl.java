@@ -58,4 +58,10 @@ public class SchoolServiceImpl implements SchoolService {
 
 	}
 
+	@Override
+	public List<School> getSchoolByToken(String token) {
+		// TODO Auto-generated method stub
+		return schoolDao.getSchoolByToken(token);
+	}
+
 }

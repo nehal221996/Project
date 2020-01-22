@@ -27,4 +27,6 @@ public interface SchoolDao {
 
 	int updateRandomKey(String email, String uniqueId);
 
+	List<School> getSchoolByToken(String token);
+
 }

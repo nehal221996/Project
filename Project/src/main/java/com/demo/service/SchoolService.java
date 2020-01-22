@@ -26,4 +26,6 @@ public interface SchoolService {
 
 	int updateRandomKey(String email, String randomKey);
 
+	List<School> getSchoolByToken(String token);
+
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.demo.dao.StudentDao;
+import com.demo.model.School;
 import com.demo.model.Student;
 
 @Repository
@@ -136,6 +137,33 @@ public class StudentDaoImpl implements StudentDao {
 		String SQL_QUERY = "  from Student  where schoolId=:schoolId";
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter("schoolId", schoolId);
+		List<Student> std = query.list();
+		t.commit();
+		return std;
+	}
+
+	@Override
+	public int updateRandomKey(String email, String randomKey) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		System.out.println(email);
+		System.out.println(randomKey);
+		Query query = session.createQuery("update Student set studentRandom_key=:key where email=:email");
+		query.setParameter("key", randomKey);
+		query.setParameter("email", email);
+		int result = query.executeUpdate();
+		// Commit the transaction and close the session
+		t.commit();
+		return result;
+	}
+
+	@Override
+	public List<Student> getStudentByToken(String token) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = "  from Student  where studentRandom_key=:token";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("token", token);
 		List<Student> std = query.list();
 		t.commit();
 		return std;

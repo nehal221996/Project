@@ -569,6 +569,28 @@ public class SchoolController {
 		}
 		
 	}
+	
+	
+	//random key generation for student
+	@RequestMapping(value="/studentRandom_key", method=RequestMethod.POST)
+	public @ResponseBody String randomStudentKey(HttpServletRequest request)
+	{
+		HttpSession session=request.getSession();
+		Student student=(Student) session.getAttribute("student");
+		
+		if(student != null)
+		{
+			String email=student.getEmail();
+			String uniqueId=UUID.randomUUID().toString();
+			studentService.updateRandomKey(email,uniqueId);
+			System.out.println("randomKey " + uniqueId);
+			return uniqueId;
+		}
+		else
+		{
+			return("/logout");
+		}
+	}
 
 	public static String encryptThisString(String input) {
 		try {

@@ -28,4 +28,8 @@ public interface StudentDao {
 
 	List<Student> getStudentListBySchoolId(int schoolId);
 
+	int updateRandomKey(String email, String randomKey);
+
+	List<Student> getStudentByToken(String token);
+
 }

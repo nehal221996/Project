@@ -208,8 +208,15 @@
 									<td></td>
 									<td>${student.password }</td>
 								</tr>
+								
+								<tr>
+									<th>Random key</th>
+									<td>${student.studentRandom_key }</td>
+								</tr>
 
 							</table>
+							<button type="submit" class="btn btn-primary" id="btnAddkey">Generate
+								Random Key</button>
 						</div>
 						<!-- </table> -->
 					</div>
@@ -300,7 +307,7 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<script src="/resources/js/validation/studentRandom_key.js"></script>
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {

@@ -61,4 +61,17 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		return studentDao.getStudentListBySchoolId(schoolId);
 	}
+
+	@Override
+	public int updateRandomKey(String email, String randomKey) {
+		
+		return studentDao.updateRandomKey(email,randomKey);
+	}
+
+	@Override
+	public List<Student> getStudentByToken(String token)
+	{
+		
+		return studentDao.getStudentByToken(token);
+	}
 }

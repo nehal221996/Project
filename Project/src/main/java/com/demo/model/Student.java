@@ -55,6 +55,19 @@ public class Student {
 
 	@Column(name = "schoolId", nullable = false)
 	private int schoolId;
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	 @Column(name = "studentRandom_key",unique = true)
+	 private String studentRandom_key;
+
+
+	public String getStudentRandom_key() {
+		return studentRandom_key;
+	}
+
+	public void setStudentRandom_key(String studentRandom_key) {
+		this.studentRandom_key = studentRandom_key;
+	}
 
 	public String getEmail() {
 		return email;
@@ -169,11 +182,11 @@ public class Student {
 		return "Student [id=" + id + ", name=" + name + ", email=" + email + ", dob=" + dob + ", gender=" + gender
 				+ ", address=" + address + ", city=" + city + ", state=" + state + ", pincode=" + pincode
 				+ ", contact_no=" + contact_no + ", doj=" + doj + ", password=" + password + ", schoolId=" + schoolId
-				+ "]";
+				+ ", studentRandom_key=" + studentRandom_key + "]";
 	}
 
 	public Student(int id, String name, String email, String dob, String gender, String address, String city,
-			String state, String pincode, String contact_no, String doj, String password, int schoolId) {
+			String state, String pincode, String contact_no, String doj, String password, int schoolId,String studentRandom_key) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -188,5 +201,6 @@ public class Student {
 		this.doj = doj;
 		this.password = password;
 		this.schoolId = schoolId;
+		this.studentRandom_key=studentRandom_key;
 	}
 }
