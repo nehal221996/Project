@@ -24,8 +24,7 @@ public class Student {
 	private String email;
 
 	@Column(name = "dob", nullable = false)
-	@JsonIgnore
-	String dob;
+	private String dob;
 
 	@Column(name = "gender", nullable = false)
 	String gender;
@@ -46,8 +45,8 @@ public class Student {
 	private String contact_no;
 
 	@Column(name = "doj", nullable = false)
-	@JsonIgnore
-	String doj;
+	
+	private String doj;
 
 	@Column(name = "password", nullable = false)
 	@JsonIgnore

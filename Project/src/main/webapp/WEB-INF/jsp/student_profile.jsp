@@ -126,18 +126,8 @@
 						<div class="panel-heading">Student Profile</div>
 						<div class="panel-body">
 							<div class="alert alert-success" role="alert">${msg }</div>
-							<!-- <ul>
-								<li style="float: left;"><button class="btn default" onclick="myFunction()">Graph</button></li>
-								li><button class="btn default">
-							<a href="line">Graph</a>
-						</button></li>
-
-								<li style="float: right;"><button class="btn default">
-										<a href="logout">Logout</a>
-									</button></li>
-							</ul> -->
-
-							<!-- Table -->
+							
+							 <!-- Table -->
 
 							<table class="table">
 
@@ -197,6 +187,7 @@
 									<th></th>
 									<th>Password:</th>
 									<th></th>
+									<th>Random key</th>
 								</tr>
 
 								<tr>
@@ -207,14 +198,13 @@
 									<td>${student.doj }</td>
 									<td></td>
 									<td>${student.password }</td>
-								</tr>
-								
-								<tr>
-									<th>Random key</th>
+									<td></td>
 									<td>${student.studentRandom_key }</td>
 								</tr>
+								
+								
 
-							</table>
+							</table> 
 							<button type="submit" class="btn btn-primary" id="btnAddkey">Generate
 								Random Key</button>
 						</div>
@@ -226,82 +216,6 @@
 		<!-- /#page-content-wrapper -->
 
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<%-- <div class="container">
-		<div class="row">
-
-			<div class="panel panel-default">
-				<!-- Default panel contents -->
-				<div class="panel-heading">School Detail</div>
-				<div class="panel-body">
-
-					<ul>
-						<!-- <li style="float: left;"><button class="btn default" onclick="myFunction()">Graph</button></li> -->
-						<!-- li><button class="btn default">
-							<a href="line">Graph</a>
-						</button></li> -->
-
-						<li style="float: right;"><button class="btn default">
-								<a href="logout">Logout</a>
-							</button></li>
-					</ul>
-
-					<!-- Table -->
-					<table class="table">
-						<!-- <table align="center" border="1"> -->
-						<tr>
-							<th>School Id</th>
-							<th>School Name</th>
-							<th>School Email</th>
-							<th>Image</th>
-							<th colspan="2">Action</th>
-						</tr>
-						<c:forEach items="${sdata}" var="dt">
-						<tr>
-							<td>${school.id}</td>
-							<td>${school.school_name}</td>
-							<td>${school.school_email}</td>
-							<td><img style="height: 80px; width: 70px"
-								src="data:image/png;base64,${Image }" /> 	<td><a href="delete?did=${dt.id}">Delete</a></td>
-							<td><a href="add_student">Add Student</a></td>
-							<td><a href="student_view">View List Of Student</a></td>
-						</tr>
-						</c:forEach>
-
-
-					</table>
-				</div>
-				<!-- </table> -->
-			</div>
-		</div>
-	</div> --%>
-	</div>
-
-
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-
 
 
 	<!-- Bootstrap core JavaScript -->

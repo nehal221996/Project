@@ -52,7 +52,7 @@ public class ApiController
 		System.out.println("sid" + schoolId);
 		List<Student> studentList = studentService.getStudentListBySchoolId(schoolId);
 		Map<String, Object> resp = new HashMap<String, Object>();
-		System.out.println("studentList" +studentList);
+		System.out.println("studentList " +studentList);
 		resp.put("data", studentList);
 		return resp;
 

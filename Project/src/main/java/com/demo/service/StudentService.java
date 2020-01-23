@@ -32,4 +32,6 @@ public interface StudentService {
 
 	List<Student> getStudentByToken(String token);
 
+	void removeStudent(Integer id);
+
 }

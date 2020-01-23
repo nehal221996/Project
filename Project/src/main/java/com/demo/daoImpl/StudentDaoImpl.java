@@ -15,6 +15,7 @@ import com.demo.dao.StudentDao;
 import com.demo.model.School;
 import com.demo.model.Student;
 
+
 @Repository
 @Transactional
 public class StudentDaoImpl implements StudentDao {
@@ -167,5 +168,16 @@ public class StudentDaoImpl implements StudentDao {
 		List<Student> std = query.list();
 		t.commit();
 		return std;
+	}
+
+	@Override
+	public void removeStudent(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		Student u = (Student) session.load(Student.class, new Integer(id));
+		if (null != u) {
+			session.delete(u);
+		}
+		t.commit();
 	}
 }

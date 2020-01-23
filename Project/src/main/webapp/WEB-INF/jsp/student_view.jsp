@@ -177,7 +177,6 @@
 	</script>
 
 	<script src="/resources/js/datatable/jquery.dataTables.min.js"></script>
-
 	<script src="/resources/js/datatable/datatable.js"></script>
 	<script src="/resources/js/studentdownload.js"></script>
 </body>

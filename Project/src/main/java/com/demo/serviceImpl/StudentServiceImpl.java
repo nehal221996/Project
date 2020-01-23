@@ -74,4 +74,10 @@ public class StudentServiceImpl implements StudentService {
 		
 		return studentDao.getStudentByToken(token);
 	}
+
+	@Override
+	public void removeStudent(Integer id) {
+		studentDao.removeStudent(id);
+		
+	}
 }
