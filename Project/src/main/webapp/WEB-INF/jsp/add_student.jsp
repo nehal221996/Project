@@ -204,6 +204,7 @@
 		</div>
 	</div>
 
+	
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
@@ -272,7 +273,7 @@
 							});
 		});
 	</script>
-
+<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
