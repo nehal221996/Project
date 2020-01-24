@@ -16,6 +16,7 @@ import com.demo.model.School;
 import com.demo.model.Student;
 
 
+
 @Repository
 @Transactional
 public class StudentDaoImpl implements StudentDao {
@@ -179,5 +180,59 @@ public class StudentDaoImpl implements StudentDao {
 			session.delete(u);
 		}
 		t.commit();
+	}
+
+	@Override
+	public List<Student> getStudentByidandsid(int id, int schoolId) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = "  from Student  where id=:id and schoolId=:schoolId";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("id", id);
+		query.setParameter("schoolId", schoolId);
+		List<Student> s = query.list();
+		System.out.println("student"+s);
+		t.commit();
+		return s;
+	
+		
+	}
+
+	@Override
+	public void updateEmployee(Student std) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		session.update(std);
+		t.commit();
+	}
+
+	@Override
+	public List<Student> getStudentsByPage(int id, int pageid, int total, String search) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = " from Student where  schoolId=:id and name Like concat('%',:searchName,'%')";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("id", id);
+		query.setParameter("searchName", search);
+		query.setFirstResult(pageid - 1);
+		query.setMaxResults(total);
+		List<Student> std = query.list();
+		t.commit();
+		return std;
+	}
+
+	@Override
+	public Long countEmployeesBySearch(int id, String search) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = "select count(*) from Student where  schoolId=:id and name Like concat('%',:searchName,'%')";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("id", id);
+		query.setParameter("searchName", search);
+		Long count = (Long) query.uniqueResult();
+		List<Student> std = query.list();
+		t.commit();
+		return count;
 	}
 }

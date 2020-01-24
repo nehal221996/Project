@@ -34,4 +34,12 @@ public interface StudentDao {
 
 	void removeStudent(Integer id);
 
+	List<Student> getStudentByidandsid(int id, int studentId);
+
+	void updateEmployee(Student std);
+
+	List<Student> getStudentsByPage(int id, int pageid, int total, String search);
+
+	Long countEmployeesBySearch(int id, String search);
+
 }

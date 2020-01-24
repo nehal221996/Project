@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.model.School;
@@ -57,4 +59,35 @@ public class ApiController
 		return resp;
 
 	}
+	
+	//for ajax call in employee_view
+		@RequestMapping(value = "/studentPagination/{pageNo}/{propertyPerPage}", method = RequestMethod.GET)
+		@ResponseBody
+		public Map<String, Object> getEmployeePage(HttpServletRequest request, @PathVariable Integer pageNo,
+				@PathVariable Integer propertyPerPage) throws ParseException {
+			System.out.println("pageno "+pageNo);		
+			HttpSession session = request.getSession();
+			School school = (School) session.getAttribute("school");
+			int sid = school.getId();
+			System.out.println("schoolId "+sid);
+			String search = request.getParameter("search[value]");
+			System.out.println("search is:" + search);
+			int page_id = pageNo;
+			int total = propertyPerPage;
+			if (page_id == 1) { // do nothing!
+
+			} else {
+				page_id = (page_id - 1) * total + 1;
+			}
+			List<Student> std=studentService.getStudentsByPage(sid, page_id, total, search);
+			Long search_size =studentService.countEmployeesBySearch(sid, search);
+			System.out.println("stduentList "+std);
+			Map<String, Object> map = new HashMap<String, Object>();
+
+			map.put("data", std);
+			map.put("recordsTotal", search_size);
+			map.put("recordsFiltered", search_size);
+			return map;
+		
+		}
 }

@@ -80,4 +80,25 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.removeStudent(id);
 		
 	}
+
+	@Override
+	public List<Student> getStudentByidandsid(int id, int studentId) {
+		return studentDao.getStudentByidandsid(id,studentId);
+	}
+
+	@Override
+	public void updateEmployee(Student std) {
+		studentDao.updateEmployee(std);
+		
+	}
+
+	@Override
+	public List<Student> getStudentsByPage(int id, int pageid, int total, String search) {
+		return studentDao.getStudentsByPage(id,pageid,total,search);
+	}
+
+	@Override
+	public Long countEmployeesBySearch(int id, String search) {
+		return studentDao.countEmployeesBySearch(id,search);
+	}
 }

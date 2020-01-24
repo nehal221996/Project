@@ -17,16 +17,17 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.config.ScheduledTaskHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,6 +43,7 @@ import com.demo.service.StudentService;
 import com.demo.util.PDFGenerator;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 
 @Controller
 @RequestMapping(value = "/school")
@@ -82,7 +84,7 @@ public class SchoolController {
 
 		schoolService.saveSchool(school);
 		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:index");
+		model.setViewName("redirect:/school/index");
 		/*
 		 * String msg = "Registration Successfully"; model.addObject("msg", msg);
 		 */
@@ -114,7 +116,7 @@ public class SchoolController {
 		School school = (School) session.getAttribute("school");
 		ModelAndView m = new ModelAndView();
 		if (school == null) {
-			m.setViewName("redirect:index");
+			m.setViewName("redirect:/school/index");
 
 		} else {
 			/*
@@ -144,7 +146,7 @@ public class SchoolController {
 		ModelAndView page = new ModelAndView();
 
 		if (school == null) {
-			page.setViewName("redirect:index");
+			page.setViewName("redirect:/school/index");
 		} else {
 			page.addObject("school", school);
 			page.setViewName("add_student");
@@ -187,7 +189,7 @@ public class SchoolController {
 		model.addObject("student", s);
 		String msg = "Student is Successfully Registered";
 		model.addObject("msg", msg);
-		model.setViewName("redirect:display");
+		model.setViewName("redirect:/school/display");
 
 		return model;
 	}
@@ -259,7 +261,7 @@ public class SchoolController {
 		HttpSession session = request.getSession();
 		School school = (School) session.getAttribute("school");
 		if (school == null) {
-			return new ModelAndView("redirect:index");
+			return new ModelAndView("redirect:/school/index");
 
 		} else {
 			ModelAndView model = new ModelAndView();
@@ -271,21 +273,181 @@ public class SchoolController {
 			model.addObject("data", data);
 			model.addObject("school", school);
 			model.setViewName("student_view");
-
 			return model;
 
 		}
 
 	}
 
-	@RequestMapping("/delete")
-	public ModelAndView deleteData(@RequestParam("did") int did) {
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public ModelAndView deleteData( @RequestParam(value = "id", required =true)Integer id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		School school=(School) session.getAttribute("school");
+		if (school == null) {
+
+			return new ModelAndView("redirect:/school/index");
+		}
+		else
+		{
+			ModelAndView m = new ModelAndView();
+			studentService.deleteData(id);
+			m.setViewName("redirect:/school/student_view");
+			return m;
+		}
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editUserPage(HttpServletRequest request) {
+		
+		int id=Integer.parseInt(request.getParameter("id"));
+		System.out.println("studentId "+id);
+		HttpSession session=request.getSession();
+		School school=(School) session.getAttribute("school");
+		if (school == null) {
+
+			return new ModelAndView("redirect:/school/index");
+		}
+		else
+		{
+			ModelAndView model=new ModelAndView();
+			int sid=school.getId();
+			List<Student> std=studentService.getStudentByidandsid(id,sid);
+			System.out.println("student  "+std);
+			model.setViewName("edit_studentInfo");
+			return model;
+		}
+	}
+	
+	@RequestMapping(value = "/editStudent_info" , method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, String> getStudentInfoForEdit(HttpServletRequest request) throws ParseException {
+		
+		int id = Integer.parseInt(request.getParameter("schoolId"));
+		System.out.println(id);
+		HttpSession session = request.getSession();
+		School school=(School) session.getAttribute("school");
+		
+		if(school != null)
+		{
+			int sid=school.getId();
+			School s=schoolService.getSchoolById(sid);
+			List<Student> std=studentService.getStudentByidandsid(id,sid);
+			
+			String school_name=s.getSchool_name();
+			int std_id = 0;
+			String std_name=null;
+			String dob = null;
+			String gender = null;
+			String std_email = null;
+			String address = null;
+			String city = null;
+			String state = null;
+			String pincode = null;
+			String contact_no = null;
+			String doj = null;
+			String password = null;
+			
+			for(Student s1 : std)
+			{
+				std_id=s1.getId();
+				std_name=s1.getName();
+				dob=s1.getDob();
+				gender=s1.getGender();
+				std_email=s1.getEmail();
+				address=s1.getAddress();
+				city=s1.getCity();
+				state=s1.getState();
+				pincode=s1.getPincode();
+				contact_no=s1.getContact_no();
+				doj=s1.getDoj();
+				password=s1.getDoj();
+				
+			}
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("schoolId", Integer.toString(sid));
+			map.put("std_id", Integer.toString(std_id));
+			map.put("std_name", std_name);
+			map.put("dob", dob);
+			map.put("gender", gender);
+			map.put("std_email", std_email);
+			map.put("address", address);
+			map.put("city", city);
+			map.put("state", state);
+			map.put("pincode", pincode);
+			map.put("contact_no",contact_no);
+			map.put("doj", doj);
+			map.put("password",password );
+			map.put("school_name", school_name);
+			return map;
+		}
+		else
+		{
+			return null;
+		}
+		
+	
+	}
+	
+
+	
+	
+	
+	@RequestMapping(value = "/updateStd", method = RequestMethod.POST)
+	public ModelAndView edditingUser( Student std, HttpServletRequest request) {
+		System.out.println("updateStudent");
+		HttpSession session = request.getSession();
+		School school=(School) session.getAttribute("school");
+		if(school== null)
+		{
+			return new ModelAndView("redirect:index");
+		}
+		else
+		{
+			studentService.updateEmployee(std);
+			ModelAndView model=new ModelAndView();
+			model.setViewName("redirect:student_view");
+			return model;
+		}
+		
+	}
+	
+	@RequestMapping(value = "/update")
+	public ModelAndView updateData(@RequestParam("uid") int uid, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		// School school=(School) session.getAttribute("school");
+		Student student = (Student) session.getAttribute("student");
 		ModelAndView m = new ModelAndView();
-		studentService.deleteData(did);
-		m.setViewName("redirect:student_view");
+
+		if (student != null) {
+			Student std = studentService.getDataById(uid);
+			m.addObject("student", std);
+			m.addObject("student", student);
+			m.setViewName("updateStudent");
+
+		} else {
+			m.setViewName("redirect:/school/index");
+		}
+
 		return m;
 	}
+	
+		/*@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public ModelAndView deleteUser(@PathVariable Integer id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		School school=(School) session.getAttribute("school");
+		if (school == null) {
 
+			return new ModelAndView("redirect:index");
+		}
+
+		else {
+			
+			studentService.deleteData(id);
+			return new ModelAndView("redirect:/school/student_view");
+
+		}
+	}
+*/
 	// download the student list in pdf
 	@GetMapping(value = "/studentdownload", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> customerReport(HttpServletRequest request) throws IOException {
@@ -323,7 +485,7 @@ public class SchoolController {
 
 		if (student == null) {
 
-			model.setViewName("redirect:index");
+			model.setViewName("redirect:/school/index");
 		} else {
 			int schoolId = student.getSchoolId();
 			// model.addObject("school", school);
@@ -362,25 +524,6 @@ public class SchoolController {
 		return page;
 	}
 
-	@RequestMapping(value = "/update")
-	public ModelAndView updateData(@RequestParam("uid") int uid, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		// School school=(School) session.getAttribute("school");
-		Student student = (Student) session.getAttribute("student");
-		ModelAndView m = new ModelAndView();
-
-		if (student != null) {
-			Student std = studentService.getDataById(uid);
-			m.addObject("student", std);
-			m.addObject("student", student);
-			m.setViewName("updateStudent");
-
-		} else {
-			m.setViewName("redirect:index");
-		}
-
-		return m;
-	}
 
 	@RequestMapping(value = "/resetpassword")
 	public ModelAndView resetPassword(HttpServletRequest request) {
@@ -389,7 +532,7 @@ public class SchoolController {
 		Student student = (Student) session.getAttribute("student");
 		ModelAndView model = new ModelAndView();
 		if (student == null) {
-			model.setViewName("redirect:index");
+			model.setViewName("redirect:/school/index");
 		} else {
 			model.addObject("student", student);
 			model.setViewName("resetPassword");
@@ -422,7 +565,7 @@ public class SchoolController {
 		School school = (School) session.getAttribute("school");
 		ModelAndView model = new ModelAndView();
 		if (school == null) {
-			model.setViewName("redirect:index");
+			model.setViewName("redirect:/school/index");
 		} else {
 			model.addObject("school", school);
 			model.setViewName("schoolResetPassword");
@@ -456,7 +599,7 @@ public class SchoolController {
 		School school = (School) session.getAttribute("school");
 		ModelAndView model = new ModelAndView();
 		if (student == null) {
-			model.setViewName("redirect:index");
+			model.setViewName("redirect:/school/index");
 		} else {
 
 			/*
@@ -494,7 +637,7 @@ public class SchoolController {
 		School school = (School) session.getAttribute("school");
 		ModelAndView model = new ModelAndView();
 		if (school == null) {
-			model.setViewName("redirect:index");
+			model.setViewName("redirect:/school/index");
 		} else {
 
 			model.setViewName("linechart");

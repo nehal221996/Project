@@ -1,6 +1,6 @@
 <%@include file="/resources/header/login_head.jsp"%>
-<%@include file="/resources/header/employee_viewTable.jsp"%>
 
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,11 +8,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Student View</title>
@@ -101,78 +96,102 @@
 			</div>
 			</nav>
 
-
-
 			<div class="container-fluid">
 				<div class="co-md-12">
 
 					<div class="panel panel-info">
 						<!-- Default panel contents -->
 						<div class="panel-body"></div>
-						<div class="panel-heading">Student Detail</div>
+						<div class="panel-heading">Add Student Information</div>
 						<div class="panel-body"></div>
-						<div class="col-md-12">
-
-							<!-- Table -->
-							<table id="example" class="display" style="width: 100%">
-
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Date Of Birth</th>
-										<th>Gender</th>
-										<th>Address</th>
-										<th>State</th>
-										<th>City</th>
-										<th>Pincode</th>
-										<th>Mobile No</th>
-										<th>Date of Joining</th>
-										<th>Edit</th>
-										<th>Delete</th>
-										
-										<!-- <th>Password</th> -->
-										
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>Id</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Date Of Birth</th>
-										<th>Gender</th>
-										<th>Address</th>
-										<th>State</th>
-										<th>City</th>
-										<th>Pincode</th>
-										<th>Mobile No</th>
-										<th>Date of Joining</th>
-										<th>Edit</th>
-										<th>Delete</th>
-										
-										
-										<%-- <td><a href="delete?did=${dt.id}">Delete</a></td> --%>
-										
-									</tr>
-								</tfoot>
+						<div class="col-md-12"></div>
 
 
-							</table>
-							<!-- </table> -->
-						</div>
+						<form action="/school/updateStd" method="post" modelAttribute="user">
+							<input type="hidden" name="id" id="std_id"> <input
+								type="hidden" id="password" name="password"> <input
+								type="hidden" id="schoolId" name="schoolId">
+
+							<div class="col-md-12">
+
+								<div class="form-group">
+									<label>Name</label> <input class="form-control" type="text"
+										name="name" id="std_name"> <br>
+								</div>
+
+								<div class="form-group">
+									<label>Date of Birth</label> <input class="form-control"
+										type="date" name="dob" id="dob"> <br>
+								</div>
+
+								<div class="form-group">
+									<label>Gender</label> <select class="form-control"
+										name="gender" id="gender">
+										<option></option>
+										<option value="female">Female</option>
+										<option value="male">Male</option>
+										<option value="other">Other</option>
+									</select> <br>
+								</div>
+
+								<div class="form-group">
+									<label>Email</label> <input class="form-control" type="text"
+										name="email" id="std_email"> <br>
+								</div>
+
+								<div class="form-group">
+									<label>Address</label> <input class="form-control" type="text"
+										name="address" id="address"> <br>
+								</div>
+
+								<div class="form-group">
+									<label>City</label> <input class="form-control" type="text"
+										name="city" id="city"> <br>
+								</div>
+
+								<div class="form-group">
+									<label>State</label> <input class="form-control" type="text"
+										name="state" id="state">
+								</div>
+
+								<div class="form-group">
+									<label>Pincode</label> <input class="form-control" type="text"
+										name="pincode" id="pincode"> <br>
+								</div>
+
+								<div class="form-group">
+									<label>Contact_no</label> <input class="form-control"
+										type="text" name=contact_no id="contact_no">
+								</div>
+
+								<div class="form-group">
+									<label>Date of Joining</label> <input class="form-control"
+										type="date" name="doj" id="doj"> <br>
+								</div>
+
+
+								<div class="form-group">
+									<input type="submit" name="submit" value="update"
+										class="submit" id="submit" />
+								</div>
+							</div>
+						</form>
+
+
+
+
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="/resources/js/datatable/jquery-3.3.1.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
+	<script src="/resources/js/edit_student.js"></script>
+
+
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
@@ -181,43 +200,6 @@
 		});
 	</script>
 
-	<script src="/resources/js/datatable/jquery.dataTables.min.js"></script>
-	<script src="/resources/js/datatable/datatable.js"></script>
-	<script src="/resources/js/studentdownload.js"></script>
+
 </body>
 </html>
-
-<%-- <tr>
-									<th>Id</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Date Of Birth</th>
-									<th>Gender</th>
-									<th>Address</th>
-									<th>State</th>
-									<th>City</th>
-									<th>Pincode</th>
-									<th>Mobile No</th>
-									<th>Date of Joining</th>
-									<!-- <th>Password</th> -->
-									<th colspan="2">Action</th>
-								</tr>
-								<c:forEach items="${stddata}" var="dt">
-									<tr>
-										<td>${dt.id}</td>
-										<td>${dt.name}</td>
-										<td>${dt.email}</td>
-										<td>${dt.dob}</td>
-										<td>${dt.gender}</td>
-										<td>${dt.address}</td>
-										<td>${dt.city}</td>
-										<td>${dt.state}</td>
-										<td>${dt.pincode}</td>
-										<td>${dt.contact_no}</td>
-										<td>${dt.doj}</td>
-										<td>${dt.password}</td> 
-										<td><a href="delete?did=${dt.id}">Delete</a></td>
-
-									</tr>
-								</c:forEach>
- --%>

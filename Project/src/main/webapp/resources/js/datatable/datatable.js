@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	$('#example').DataTable({
-		
+		"processing": true,
+        "serverSide": true,
+        "bLengthChange": false,
         
 		"ajax" :{
    			"data": function(){
@@ -8,6 +10,9 @@ $(document).ready(function() {
 		
 		      $('#example').DataTable().ajax.url(
 		    		  "/api/getStudent"
+		      );
+		      $('#example').DataTable().ajax.url(
+		    		  "/api/studentPagination/"+(info.page + 1)+"/"+10
 		      );
 		   },
     	},
@@ -33,8 +38,25 @@ $(document).ready(function() {
 			"data" : "contact_no"
 		}, {
 			"data" : "doj"
-		} ],
+		}, {
+			"data" : "id",
+			"title": "edit",
+			"render": function (data, type, row) {
+				return '<a href="/school/edit?id=' + data + '">Edit</a>';
+			}
+		},
 		
-		
+		{    
+            "data": "id",  
+            "title": "delete",
+            "render": function (data, type, row) {  
+                return '<a href="/school/delete?id=' + data + '">Delete</a>';  
+            } 
+            
+            
+		}],
+		"processing": true,
+        "serverSide": true,
+        "bLengthChange": false,
 	});
 });

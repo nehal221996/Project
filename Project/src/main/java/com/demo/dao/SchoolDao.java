@@ -29,4 +29,6 @@ public interface SchoolDao {
 
 	List<School> getSchoolByToken(String token);
 
+	
+
 }

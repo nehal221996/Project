@@ -64,4 +64,5 @@ public class SchoolServiceImpl implements SchoolService {
 		return schoolDao.getSchoolByToken(token);
 	}
 
+
 }

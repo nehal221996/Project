@@ -28,4 +28,6 @@ public interface SchoolService {
 
 	List<School> getSchoolByToken(String token);
 
+	
+
 }
