@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	$('#example').DataTable({
-		"processing": true,
-        "serverSide": true,
-        "bLengthChange": false,
+		"processing": true, // for show progress bar
+        "serverSide": true, // for process server side
+       
         
 		"ajax" :{
    			"data": function(){
@@ -57,6 +57,6 @@ $(document).ready(function() {
 		}],
 		"processing": true,
         "serverSide": true,
-        "bLengthChange": false,
+       
 	});
 });
