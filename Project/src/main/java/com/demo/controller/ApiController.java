@@ -111,13 +111,5 @@ public class ApiController
 			}
 		}
 		
-		@RequestMapping(value="/deletePopUp")
-		public ModelAndView deletePopUp(HttpServletRequest request)
-		{
-			HttpSession session = request.getSession();
-			School school=(School) session.getAttribute("school");
-			ModelAndView model=new ModelAndView();
-			model.setViewName("deletePopUp");
-			return model;
-		}
+		
 }

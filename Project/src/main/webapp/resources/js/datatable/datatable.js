@@ -93,9 +93,9 @@ $(document)
 									'tr td #del',
 									function() {
 										var row = $(this).parents('tr')[0];
-										var mydata = (example.row(row).data());
+										var data = (example.row(row).data());
 										var con = confirm("Are you sure you want to delete this profile Id "
-												+ mydata["id"])
+												+ data["id"])
 										if (con) {
 											// Do Something
 										} else {
