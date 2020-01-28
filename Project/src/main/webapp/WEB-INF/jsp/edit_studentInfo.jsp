@@ -9,8 +9,18 @@
 <html>
 <head>
 
+<script src="/resources/jqueryValidation/jquery.min.js"></script>
+<script src="/resources/jqueryValidation/jquery.validate.min.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Student View</title>
+
+<style>
+.error {
+	color: red;
+}
+</style>
+
 <style>
 .btn {
 	background-color: DodgerBlue;
@@ -107,7 +117,8 @@
 						<div class="col-md-12"></div>
 
 
-						<form action="/school/updateStd" method="post" modelAttribute="user">
+						<form action="/school/updateStd" method="post"
+							modelAttribute="user" id="demoForm">
 							<input type="hidden" name="id" id="std_id"> <input
 								type="hidden" id="password" name="password"> <input
 								type="hidden" id="schoolId" name="schoolId">
@@ -176,21 +187,12 @@
 								</div>
 							</div>
 						</form>
-
-
-
-
 					</div>
 				</div>
 			</div>
 
 		</div>
 	</div>
-
-
-	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/js/edit_student.js"></script>
-
 
 	<!-- Menu Toggle Script -->
 	<script>
@@ -201,5 +203,66 @@
 	</script>
 
 
+
+	<script type="text/javascript">
+		$(function() {
+			// Initialize form validation on the registration form.
+			// It has the name attribute "registration"
+			$("#demoForm")
+					.validate(
+							{
+								// Specify validation rules
+								rules : {
+									name : "required",
+									email : {
+										required : true,
+										// Specify that email should be validated
+										// by the built-in "email" rule
+										email : true
+									},
+									dob : "required",
+									gender : "required",
+									address : "required",
+									state : "required",
+									city : "required",
+									pincode : "required",
+									contact_no : "required",
+									doj : "required",
+									password : {
+										required : true,
+										minlength : 5
+									}
+								},
+								// Specify validation error messages
+								messages : {
+									name : "Please enter your user name",
+									email : {
+										required : "Please provide a email address",
+										email : "Please enter valid email address"
+									},
+									dob : "Please enter date of birth name",
+									gender : "Please select your gender",
+									address : "Please enter address",
+									state : "Please enter state",
+									city : "Please enter city",
+									pincode : "Please enter pincode",
+									contact_no : "Please enter your mobile number",
+									doj : "Please enter joining date",
+									password : {
+										required : "Please provide a password",
+										minlength : "Your password must be at least 5 characters long"
+									}
+
+								},
+								// Make sure the form is submitted to the destination defined
+								// in the "action" attribute of the form when valid
+								submitHandler : function(form) {
+									form.submit();
+								}
+							});
+		});
+	</script>
+	<script src="/resources/js/edit_student.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

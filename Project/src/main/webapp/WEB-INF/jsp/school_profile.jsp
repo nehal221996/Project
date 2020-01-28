@@ -6,8 +6,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Home</title>
@@ -72,13 +70,6 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
-					<!-- <li class="nav-item active"><a class="nav-link"
-						href="registration">Register here <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="/school/index">Login here <span class="sr-only">(current)</span>
-					</a></li> -->
-					<!-- <li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -114,7 +105,7 @@
 									<th>School Email</th>
 									<th>Image</th>
 									<th>Random Key</th>
-									
+
 									<!-- <th colspan="2">Action</th> -->
 								</tr>
 								<%-- <c:forEach items="${sdata}" var="dt"> --%>
@@ -123,12 +114,12 @@
 									<td>${school.school_name}</td>
 									<td>${school.school_email}</td>
 									<td><img style="height: 200px; width: 200px"
-										src="data:image/png;base64,${Image }"/> </td>
+										src="data:image/png;base64,${Image }" /></td>
 									<td>${school.random_key }</td>
-									
-										
-										<%-- 	<td><a href="delete?did=${dt.id}">Delete</a></td> --%>
-										<!-- <td><a href="add_student">Add Student</a></td>
+
+
+									<%-- 	<td><a href="delete?did=${dt.id}">Delete</a></td> --%>
+									<!-- <td><a href="add_student">Add Student</a></td>
 									<td><a href="student_view">View List Of Student</a></td> -->
 								</tr>
 								<%-- </c:forEach> --%>
@@ -136,7 +127,7 @@
 
 							</table>
 
-							
+
 							<button type="submit" class="btn btn-primary" id="btnAddkey">Generate
 								Random Key</button>
 						</div>
@@ -150,7 +141,7 @@
 	</div>
 	<script src="/resources/js/validation/random_key.js"></script>
 	<%@include file="/resources/header/dropDown.jsp"%>
-	
+
 
 	<!-- Menu Toggle Script -->
 	<script>

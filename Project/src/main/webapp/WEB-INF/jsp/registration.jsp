@@ -6,10 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
-
 <script src="/resources/jqueryValidation/jquery.min.js"></script>
-
 <script src="/resources/jqueryValidation/jquery.validate.min.js"></script>
 
 <style>

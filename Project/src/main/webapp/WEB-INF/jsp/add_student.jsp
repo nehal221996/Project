@@ -9,16 +9,14 @@
 <script src="/resources/jqueryValidation/jquery.min.js"></script>
 <script src="/resources/jqueryValidation/jquery.validate.min.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 
 <style>
 .error {
 	color: red;
 }
 </style>
+
 <style>
 .btn {
   background-color: DodgerBlue;
@@ -102,15 +100,11 @@
 							<div class="panel-heading">Student Registration</div>
 							<div class="panel-body">
 
-
-
 								<div class="form-group">
 									<input type="hidden" name="id" value="id">
 								</div>
 
 								<table class="table">
-
-
 									<tr>
 										<th>Enter Student Name</th>
 										<td><input class="form-control" type="text" name="name"

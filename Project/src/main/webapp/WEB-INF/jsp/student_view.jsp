@@ -8,11 +8,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Student View</title>
@@ -110,8 +108,7 @@
 						<!-- Default panel contents -->
 						<div class="panel-body"></div>
 						<div class="panel-heading">Student Detail</div>
-						<div class="panel-body">
-						</div>
+						<div class="panel-body"></div>
 						<div class="col-md-12">
 
 							<!-- Table -->
@@ -132,9 +129,9 @@
 										<th>Date of Joining</th>
 										<th>Edit</th>
 										<th>Delete</th>
-										
+
 										<!-- <th>Password</th> -->
-										
+
 									</tr>
 								</thead>
 								<tfoot>
@@ -152,10 +149,10 @@
 										<th>Date of Joining</th>
 										<th>Edit</th>
 										<th>Delete</th>
-										
-										
+
+
 										<%-- <td><a href="delete?did=${dt.id}">Delete</a></td> --%>
-										
+
 									</tr>
 								</tfoot>
 
@@ -173,7 +170,7 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="/resources/js/datatable/jquery-3.3.1.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
+
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
