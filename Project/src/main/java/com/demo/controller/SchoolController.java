@@ -110,7 +110,7 @@ public class SchoolController {
 	 * }
 	 */
 
-	@RequestMapping("/display")
+	@RequestMapping(value="/display")
 	public ModelAndView show(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		School school = (School) session.getAttribute("school");
@@ -279,7 +279,7 @@ public class SchoolController {
 
 	}
 
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	/*@RequestMapping(value="/delete")
 	public ModelAndView deleteData( @RequestParam(value = "id", required =true)Integer id, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		School school=(School) session.getAttribute("school");
@@ -294,7 +294,7 @@ public class SchoolController {
 			m.setViewName("redirect:/school/student_view");
 			return m;
 		}
-	}
+	}*/
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView editUserPage(HttpServletRequest request) {
@@ -387,10 +387,6 @@ public class SchoolController {
 		
 	
 	}
-	
-
-	
-	
 	
 	@RequestMapping(value = "/updateStd", method = RequestMethod.POST)
 	public ModelAndView edditingUser( Student std, HttpServletRequest request) {

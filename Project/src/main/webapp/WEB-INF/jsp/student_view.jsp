@@ -110,7 +110,8 @@
 						<!-- Default panel contents -->
 						<div class="panel-body"></div>
 						<div class="panel-heading">Student Detail</div>
-						<div class="panel-body"></div>
+						<div class="panel-body">
+						</div>
 						<div class="col-md-12">
 
 							<!-- Table -->

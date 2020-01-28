@@ -49,8 +49,10 @@ $(document).ready(function() {
 		{    
             "data": "id",  
             "title": "delete",
+            "message": "Are you sure you wish to delete this record?",
             "render": function (data, type, row) {  
-                return '<a href="/school/delete?id=' + data + '">Delete</a>';  
+            	/*return '<a href="/api/deletePopUp">Delete</a>';*/
+                return '<a href="/api/delete?id=' + data + '">Delete</a>'; 
             } 
             
             

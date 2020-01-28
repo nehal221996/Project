@@ -12,11 +12,14 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.model.School;
 import com.demo.model.Student;
@@ -89,5 +92,32 @@ public class ApiController
 			map.put("recordsFiltered", search_size);
 			return map;
 		
+		}
+		
+		@RequestMapping(value="/delete")
+		public ModelAndView deleteData( @RequestParam(value = "id", required =true)Integer id, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			School school=(School) session.getAttribute("school");
+			if (school == null) {
+
+				return new ModelAndView("redirect:/school/index");
+			}
+			else
+			{
+				ModelAndView m = new ModelAndView();
+				studentService.deleteData(id);
+				m.setViewName("redirect:/school/student_view");
+				return m;
+			}
+		}
+		
+		@RequestMapping(value="/deletePopUp")
+		public ModelAndView deletePopUp(HttpServletRequest request)
+		{
+			HttpSession session = request.getSession();
+			School school=(School) session.getAttribute("school");
+			ModelAndView model=new ModelAndView();
+			model.setViewName("deletePopUp");
+			return model;
 		}
 }
