@@ -19,17 +19,17 @@
 
 <style>
 .btn {
-  background-color: DodgerBlue;
-  border: none;
-  color: white;
-  padding: 12px 16px;
-  font-size: 16px;
-  cursor: pointer;
+	background-color: DodgerBlue;
+	border: none;
+	color: white;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
 }
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color: RoyalBlue;
+	background-color: RoyalBlue;
 }
 </style>
 
@@ -42,11 +42,16 @@
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Menu</div>
+			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
+				<div id="image">
+					<img style="height: 150px; width: 200px"
+						src="data:image/png;base64,${Image }" />
+				</div>
 				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
-					Information</a> --> <a href="add_student"
+					Information</a> -->
+				<a href="add_student"
 					class="list-group-item list-group-item-action bg-light">Add
 					Student</a> <a href="student_view"
 					class="list-group-item list-group-item-action bg-light">View
@@ -64,7 +69,9 @@
 
 			<nav
 				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-			<button class="btn" id="menu-toggle"><i class="fa fa-bars"></i></button>
+			<button class="btn" id="menu-toggle">
+				<i class="fa fa-bars"></i>
+			</button>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -75,12 +82,12 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-					
+
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">  User Option </a>
+						aria-expanded="false"> User Option </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/school/index">Login Here</a> <a
@@ -198,7 +205,7 @@
 		</div>
 	</div>
 
-	
+
 	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
@@ -267,7 +274,7 @@
 							});
 		});
 	</script>
-<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

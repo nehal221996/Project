@@ -37,8 +37,10 @@
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Menu</div>
+			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
+				<img style="height: 150px; width: 200px"
+					src="data:image/png;base64,${Image }" />
 				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
 					Information</a> -->
@@ -85,7 +87,7 @@
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">  User Option  </a>
+						aria-expanded="false"> User Option </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/school/index">Login Here</a> <a

@@ -6,34 +6,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>LineChart</title>
 <style>
 .btn {
-  background-color: DodgerBlue;
-  border: none;
-  color: white;
-  padding: 12px 16px;
-  font-size: 16px;
-  cursor: pointer;
+	background-color: DodgerBlue;
+	border: none;
+	color: white;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
 }
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color: RoyalBlue;
+	background-color: RoyalBlue;
 }
 </style>
 </head>
 <body>
 
 
-<div class="d-flex" id="wrapper">
+	<div class="d-flex" id="wrapper">
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Menu</div>
+			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
+				<img style="height: 150px; width: 200px"
+					src="data:image/png;base64,${Image }" />
 				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
 					Information</a> -->
@@ -55,7 +58,9 @@
 
 			<nav
 				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-			<button class="btn" id="menu-toggle"><i class="fa fa-bars"></i></button>
+			<button class="btn" id="menu-toggle">
+				<i class="fa fa-bars"></i>
+			</button>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -78,7 +83,7 @@
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">  User Option </a>
+						aria-expanded="false"> User Option </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/school/index">Login Here</a> <a

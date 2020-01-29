@@ -44,8 +44,10 @@
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Menu</div>
+			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
+				<img style="height: 150px; width: 200px"
+					src="data:image/png;base64,${Image }" />
 				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
 					Information</a> -->

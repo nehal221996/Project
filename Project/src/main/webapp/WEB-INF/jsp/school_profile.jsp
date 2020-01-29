@@ -31,8 +31,10 @@
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Menu</div>
+			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
+				<div id="image"> <img style="height: 150px; width: 200px"
+										src="data:image/png;base64,${Image }" /></div>
 				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
 					Information</a> -->
@@ -103,7 +105,7 @@
 									<th>School Id</th>
 									<th>School Name</th>
 									<th>School Email</th>
-									<th>Image</th>
+									<!-- <th>Image</th> -->
 									<th>Random Key</th>
 
 									<!-- <th colspan="2">Action</th> -->
@@ -113,8 +115,8 @@
 									<td>${school.id}</td>
 									<td>${school.school_name}</td>
 									<td>${school.school_email}</td>
-									<td><img style="height: 200px; width: 200px"
-										src="data:image/png;base64,${Image }" /></td>
+									<%-- <td><img style="height: 200px; width: 200px"
+										src="data:image/png;base64,${Image }" /></td> --%>
 									<td>${school.random_key }</td>
 
 
@@ -128,7 +130,7 @@
 							</table>
 
 
-							<button type="submit" class="btn btn-primary" id="btnAddkey">Generate
+							<button type="submit" class="btn btn-info" id="btnAddkey">Generate
 								Random Key</button>
 						</div>
 						<!-- </table> -->

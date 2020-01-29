@@ -151,6 +151,8 @@ public class SchoolController {
 		if (school == null) {
 			page.setViewName("redirect:/school/index");
 		} else {
+			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+			page.addObject("Image", base64Encoded);
 			page.addObject("school", school);
 			page.setViewName("add_student");
 		}
@@ -275,6 +277,8 @@ public class SchoolController {
 			System.out.println(data);
 			model.addObject("data", data);
 			model.addObject("school", school);
+			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+			model.addObject("Image", base64Encoded);
 			model.setViewName("student_view");
 			return model;
 
@@ -316,6 +320,8 @@ public class SchoolController {
 			int sid=school.getId();
 			List<Student> std=studentService.getStudentByidandsid(id,sid);
 			System.out.println("student  "+std);
+			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+			model.addObject("Image", base64Encoded);
 			model.setViewName("edit_studentInfo");
 			return model;
 		}
@@ -567,6 +573,8 @@ public class SchoolController {
 			model.setViewName("redirect:/school/index");
 		} else {
 			model.addObject("school", school);
+			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+			model.addObject("Image", base64Encoded);
 			model.setViewName("schoolResetPassword");
 		}
 		return model;
@@ -639,6 +647,8 @@ public class SchoolController {
 			model.setViewName("redirect:/school/index");
 		} else {
 
+			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+			model.addObject("Image", base64Encoded);
 			model.setViewName("linechart");
 
 		}
