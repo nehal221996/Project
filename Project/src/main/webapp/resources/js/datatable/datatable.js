@@ -4,8 +4,10 @@ $(document)
 					var example = $('#example')
 							.DataTable(
 									{
-										"processing" : true, // for show progress bar
-										"serverSide" : true, // for process server side
+										"processing" : true, // for show
+																// progress bar
+										"serverSide" : true, // for process
+																// server side
 
 										"ajax" : {
 											"data" : function() {
@@ -68,14 +70,15 @@ $(document)
 												},
 
 												{
+
 													"data" : "id",
 													"title" : "delete",
 													"render" : function(data,
 															type, row) {
 
-														/*return '<a href="/api/delete?id='
+														return '<a href="/api/delete?id='
 																+ data
-																+ '">Delete</a>';*/
+																+ '">Delete</a>';
 
 														return '<a href="/api/delete?id='
 																+ data

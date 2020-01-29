@@ -131,6 +131,9 @@ public class SchoolController {
 			System.out.println(schoolId);
 			m.addObject("school", school);
 			System.out.println(school);
+			String name=school.getSchool_name();
+			m.addObject("name", school);
+			System.out.println(name);
 			String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
 			m.addObject("Image", base64Encoded);
 			m.setViewName("school_profile");
