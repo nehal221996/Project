@@ -33,19 +33,19 @@
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
-				<div id="image"> <img style="height: 150px; width: 200px"
+				<div class="img logo rounded-circle mb-5" > <img style="height: 150px; width: 200px"
 										src="data:image/png;base64,${Image }" /></div>
 				<!-- <a href="display"
 					class="list-group-item list-group-item-action bg-light">School
 					Information</a> -->
 				<a href="add_student"
-					class="list-group-item list-group-item-action bg-light">Add
+					class="list-group-item list-group-item-action bg-light"><span class="fa fa-user mr-3"></span>Add
 					Student</a> <a href="student_view"
-					class="list-group-item list-group-item-action bg-light">View
+					class="list-group-item list-group-item-action bg-light"><span class="fa fa-address-book mr-3"></span>View
 					List Of Student</a> <a href="line"
-					class="list-group-item list-group-item-action bg-light">Graph</a><a
+					class="list-group-item list-group-item-action bg-light"><span class="fa fa-line-chart mr-3"></span>Graph</a><a
 					href="schoolResetPassword"
-					class="list-group-item list-group-item-action bg-light">Reset
+					class="list-group-item list-group-item-action bg-light"><span class="fa fa-key mr-3"></span>Reset
 					Password</a>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 				<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						class="nav-link dropdown-toggle fa fa-user-circle-o mr-3" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> User Option </a>
 						<div class="dropdown-menu dropdown-menu-right"
@@ -81,7 +81,7 @@
 							<a class="dropdown-item" href="/school/index">Login Here</a> <a
 								class="dropdown-item" href="display">School Profile</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="logout">LogOut</a>
+							<a class="dropdown-item fa fa-sign-out mr-3" href="logout">LogOut</a>
 						</div></li>
 				</ul>
 			</div>
