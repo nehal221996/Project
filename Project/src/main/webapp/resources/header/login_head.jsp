@@ -17,7 +17,7 @@
 
 <!-- Custom styles for this template -->
 <link href="/resources/css/simple-sidebar.css" rel="stylesheet">
-
+<link href="/resources/css/style.css" rel="stylesheet">
 <!-- Optional theme -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"

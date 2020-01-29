@@ -42,15 +42,19 @@
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Menu</div>
+			<div class="sidebar-heading p-3 mb-2 bg-secondary text-white">Welcome
+				to ${school.school_name} ${student.name }</div>
 			<div class="list-group list-group-flush">
 				<a href="schoolInfo"
-					class="list-group-item list-group-item-action bg-light">School
-					Information</a><a href="update?uid=${student.id }"
-					class="list-group-item list-group-item-action bg-light">Update
-					Profile</a> <a href="resetpassword"
-					class="list-group-item list-group-item-action bg-light">Reset
-					Password</a>
+					class="list-group-item list-group-item-action bg-light"><span
+					class="fa fa-info-circle mr-3"></span>School Information</a><a
+					href="update?uid=${student.id }"
+					class="list-group-item list-group-item-action bg-light"><span
+					class="fa fa-user-plus mr-3"></span>Update Profile</a> <a
+					href="resetpassword"
+					class="list-group-item list-group-item-action bg-light"><span
+					class="fa fa-key mr-3"></span>Reset Password</a>
+
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -83,15 +87,15 @@
 					</a></li> -->
 					<!-- <li class="nav-item"><a class="nav-link" href="#">Link</a></li> -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						class="nav-link dropdown-toggle fa fa-user-circle-o mr-3" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Dropdown </a>
+						aria-expanded="false"> User Option </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/school/index">Login Here</a> <a
 								class="dropdown-item" href="profile">Student Profile</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="logout">LogOut</a>
+							<a class="dropdown-item fa fa-sign-out mr-3" href="logout">LogOut</a>
 						</div></li>
 				</ul>
 			</div>

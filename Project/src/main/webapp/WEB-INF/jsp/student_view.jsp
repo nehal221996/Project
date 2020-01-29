@@ -37,7 +37,7 @@
 
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading text-primary">Welcome To ${school.school_name}</div>
+			<div class="sidebar-heading p-3 mb-2 bg-secondary text-white">Welcome To ${school.school_name}</div>
 			<div class="list-group list-group-flush">
 				<div class="img logo rounded-circle mb-5">
 					<img style="height: 150px; width: 200px"
