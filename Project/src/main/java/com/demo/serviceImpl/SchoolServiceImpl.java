@@ -70,4 +70,14 @@ public class SchoolServiceImpl implements SchoolService {
 		return schoolDao.getSchool();
 	}
 
+	@Override
+	public void removeSchool(Integer id) {
+		schoolDao.removeSchool(id);
+	}
+
+	@Override
+	public void updateSchool(School s) {
+		schoolDao.updateSchool(s);
+	}
+
 }

@@ -31,6 +31,10 @@ public interface SchoolDao {
 
 	List<School> getSchool();
 
+	void removeSchool(Integer id);
+
+	void updateSchool(School s);
+
 	
 
 }

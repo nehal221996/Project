@@ -98,7 +98,7 @@ public class StudentRestApiController {
 		return studentService.getStudentById(id);
 	}
 
-	// save student @@@@@
+	// save student
 	@PostMapping(value = "/student/save")
 	public Student createStd(@RequestBody Student std) {
 		String encodedPassword = encryptThisString(std.getPassword());
@@ -107,18 +107,7 @@ public class StudentRestApiController {
 
 	}
 
-	/*// save student @@@@@
-	@PostMapping(value = "/student1/save")
-	@ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<Student> createStd1(@RequestBody Student std) {
-		String encodedPassword = encryptThisString(std.getPassword());
-		std.setPassword(encodedPassword);
-		Student student = studentService.saveStudent(std);
-		return new ResponseEntity<Student>(student, HttpStatus.OK);
-
-	}*/
-
-	// update student @@@@@@
+	// update student 
 	@PutMapping("/student/update/{id}")
 	public void updateStudent(@PathVariable Integer id, @RequestBody Student std) {
 		Student s =studentService.getStudentByIdRest(id);

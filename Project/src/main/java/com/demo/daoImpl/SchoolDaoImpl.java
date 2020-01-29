@@ -15,7 +15,6 @@ import com.demo.dao.SchoolDao;
 import com.demo.model.School;
 import com.demo.model.Student;
 
-
 @Repository
 @Transactional
 public class SchoolDaoImpl implements SchoolDao {
@@ -168,6 +167,23 @@ public class SchoolDaoImpl implements SchoolDao {
 		return s;
 	}
 
-	
+	@Override
+	public void removeSchool(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		School s = session.load(School.class, new Integer(id));
+		if (null != s) {
+			session.delete(s);
+		}
+		t.commit();
+	}
+
+	@Override
+	public void updateSchool(School s) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		session.update(s);
+		t.commit();
+	}
 
 }

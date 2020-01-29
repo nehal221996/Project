@@ -32,7 +32,6 @@ public class School {
 	private String school_email;
 
 	@Column(name = "school_pass", nullable = false)
-	@JsonIgnore
 	private String school_pass;
 
 	@Lob

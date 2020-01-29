@@ -30,6 +30,10 @@ public interface SchoolService {
 
 	List<School> getSchool();
 
+	void removeSchool(Integer id);
+
+	void updateSchool(School s);
+
 	
 
 }
