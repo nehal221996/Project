@@ -86,7 +86,7 @@ public class SchoolRestApiController {
 	}
 
 	// delete school
-	@DeleteMapping("/school/{id}")
+	@DeleteMapping("/school/delete/{id}")
 	public void deleteSchool(@PathVariable Integer id) {
 		schoolService.removeSchool(id);
 	}
@@ -99,10 +99,12 @@ public class SchoolRestApiController {
 	}
 
 	//updating school info
-	@PutMapping("/school/{id}")
+	@PutMapping("/school/update/{id}")
 	public void updateSchool(@PathVariable Integer id, @RequestBody School school) {
 			School s=schoolService.getSchoolById(id);
 			s.setSchool_name(school.getSchool_name());
+			String encodedPassword = encryptThisString(school.getSchool_pass());
+			school.setSchool_pass(encodedPassword);
 			schoolService.updateSchool(s);
 	}
 
