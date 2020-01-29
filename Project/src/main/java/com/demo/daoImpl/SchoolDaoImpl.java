@@ -15,6 +15,7 @@ import com.demo.dao.SchoolDao;
 import com.demo.model.School;
 import com.demo.model.Student;
 
+
 @Repository
 @Transactional
 public class SchoolDaoImpl implements SchoolDao {
@@ -29,11 +30,12 @@ public class SchoolDaoImpl implements SchoolDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void saveSchool(School school) {
+	public School saveSchool(School school) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction t = session.beginTransaction();
 		session.save(school);
 		t.commit();
+		return school;
 	}
 
 	public List<School> getSchoolByEmail(String email) {
@@ -155,6 +157,15 @@ public class SchoolDaoImpl implements SchoolDao {
 		List<School> school = query.list();
 		t.commit();
 		return school;
+	}
+
+	@Override
+	public List<School> getSchool() {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		List<School> s = session.createQuery("from School").list();
+		t.commit();
+		return s;
 	}
 
 	

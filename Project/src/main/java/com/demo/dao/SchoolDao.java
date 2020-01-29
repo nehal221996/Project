@@ -7,7 +7,7 @@ import com.demo.model.Student;
 
 public interface SchoolDao {
 
-	void saveSchool(School school);
+	School saveSchool(School school);
 
 	List<School> getSchoolByEmail(String email);
 
@@ -28,6 +28,8 @@ public interface SchoolDao {
 	int updateRandomKey(String email, String uniqueId);
 
 	List<School> getSchoolByToken(String token);
+
+	List<School> getSchool();
 
 	
 

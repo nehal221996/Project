@@ -58,6 +58,7 @@ $(document)
 												{
 													"data" : "id",
 													"title" : "edit",
+													"type" : "post",
 													"render" : function(data,
 															type, row) {
 														return '<a href="/school/edit?id='

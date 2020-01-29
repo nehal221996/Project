@@ -19,8 +19,8 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.getStudentByEmail(email);
 	}
 
-	public void saveStudent(Student std) {
-		studentDao.saveStudent(std);
+	public Student saveStudent(Student std) {
+		return studentDao.saveStudent(std);
 
 	}
 
@@ -64,41 +64,50 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public int updateRandomKey(String email, String randomKey) {
-		
-		return studentDao.updateRandomKey(email,randomKey);
+
+		return studentDao.updateRandomKey(email, randomKey);
 	}
 
 	@Override
-	public List<Student> getStudentByToken(String token)
-	{
-		
+	public List<Student> getStudentByToken(String token) {
+
 		return studentDao.getStudentByToken(token);
 	}
 
 	@Override
 	public void removeStudent(Integer id) {
 		studentDao.removeStudent(id);
-		
+
 	}
 
 	@Override
 	public List<Student> getStudentByidandsid(int id, int studentId) {
-		return studentDao.getStudentByidandsid(id,studentId);
+		return studentDao.getStudentByidandsid(id, studentId);
 	}
 
 	@Override
-	public void updateEmployee(Student std) {
-		studentDao.updateEmployee(std);
-		
+	public void updateStudent(Student std) {
+		studentDao.updateStudent(std);
+
 	}
 
 	@Override
 	public List<Student> getStudentsByPage(int id, int pageid, int total, String search) {
-		return studentDao.getStudentsByPage(id,pageid,total,search);
+		return studentDao.getStudentsByPage(id, pageid, total, search);
 	}
 
 	@Override
 	public Long countEmployeesBySearch(int id, String search) {
-		return studentDao.countEmployeesBySearch(id,search);
+		return studentDao.countEmployeesBySearch(id, search);
+	}
+
+	@Override
+	public List<Student> allStudent() {
+		return studentDao.allStudent();
+	}
+
+	@Override
+	public Student getStudentByIdRest(int id) {// TODO Auto-generated method stub
+		return studentDao.getStudentByIdRest(id);
 	}
 }

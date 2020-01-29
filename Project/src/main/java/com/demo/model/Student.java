@@ -49,7 +49,6 @@ public class Student {
 	private String doj;
 
 	@Column(name = "password", nullable = false)
-	@JsonIgnore
 	private String password;
 
 	@Column(name = "schoolId", nullable = false)

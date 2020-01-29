@@ -399,7 +399,7 @@ public class SchoolController {
 		}
 		else
 		{
-			studentService.updateEmployee(std);
+			studentService.updateStudent(std);
 			ModelAndView model=new ModelAndView();
 			model.setViewName("redirect:student_view");
 			return model;

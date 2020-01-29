@@ -14,8 +14,9 @@ public class SchoolServiceImpl implements SchoolService {
 	@Autowired
 	SchoolDao schoolDao;
 
-	public void saveSchool(School school) {
-		schoolDao.saveSchool(school);
+	public School saveSchool(School school) {
+		return schoolDao.saveSchool(school);
+		
 	}
 
 	public List<School> getSchoolByEmail(String email) {
@@ -54,7 +55,7 @@ public class SchoolServiceImpl implements SchoolService {
 
 	@Override
 	public int updateRandomKey(String email, String randomKey) {
-		return schoolDao.updateRandomKey(email,randomKey);
+		return schoolDao.updateRandomKey(email, randomKey);
 
 	}
 
@@ -64,5 +65,9 @@ public class SchoolServiceImpl implements SchoolService {
 		return schoolDao.getSchoolByToken(token);
 	}
 
+	@Override
+	public List<School> getSchool() {
+		return schoolDao.getSchool();
+	}
 
 }

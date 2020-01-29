@@ -6,7 +6,7 @@ import com.demo.model.School;
 
 public interface SchoolService {
 
-	void saveSchool(School school);
+	School saveSchool(School school);
 
 	List<School> getSchoolByEmail(String email);
 
@@ -27,6 +27,8 @@ public interface SchoolService {
 	int updateRandomKey(String email, String randomKey);
 
 	List<School> getSchoolByToken(String token);
+
+	List<School> getSchool();
 
 	
 

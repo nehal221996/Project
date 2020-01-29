@@ -9,14 +9,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.model.School;
 import com.demo.service.SchoolService;
 import com.demo.service.StudentService;
+
 
 @RestController
 @RequestMapping(value = "/api")
@@ -63,6 +67,21 @@ public class SchoolRestApiController {
 		}
 
 	}
+	
+	//for all school
+	@GetMapping(value = "/school")
+	public List<School> getSchool()
+	{
+		return schoolService.getSchool();
+	}
+	
+	
+	@PostMapping(value = "/school/schoolSave")
+	public @ResponseBody School create(@RequestBody School school)
+	{
+		return schoolService.saveSchool(school);
+	}
+	
 	
 	
 	

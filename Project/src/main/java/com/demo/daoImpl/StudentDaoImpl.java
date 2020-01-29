@@ -42,11 +42,12 @@ public class StudentDaoImpl implements StudentDao {
 		return std;
 	}
 
-	public void saveStudent(Student std) {
+	public Student saveStudent(Student std) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction t = session.beginTransaction();
 		session.save(std);
 		t.commit();
+		return std;
 
 	}
 
@@ -199,7 +200,7 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public void updateEmployee(Student std) 
+	public void updateStudent(Student std) 
 	{
 		Session session = sessionFactory.getCurrentSession();
 		Transaction t = session.beginTransaction();
@@ -234,5 +235,25 @@ public class StudentDaoImpl implements StudentDao {
 		List<Student> std = query.list();
 		t.commit();
 		return count;
+	}
+
+	@Override
+	public List<Student> allStudent() {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		List<Student> allUser = session.createQuery("from Student").list();
+		t.commit();
+		return allUser;
+	
+	}
+
+	@Override
+	public Student getStudentByIdRest(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		Student s=session.load(Student.class,  new Integer(id));
+		t.commit();
+		return s;
+		
 	}
 }

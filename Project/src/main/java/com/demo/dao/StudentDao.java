@@ -8,7 +8,7 @@ public interface StudentDao {
 
 	List<Student> getStudentByEmail(String email);
 
-	void saveStudent(Student std);
+	Student saveStudent(Student std);
 
 	/* List<Student> getStudentList(); */
 
@@ -36,10 +36,14 @@ public interface StudentDao {
 
 	List<Student> getStudentByidandsid(int id, int studentId);
 
-	void updateEmployee(Student std);
+	void updateStudent(Student std);
 
 	List<Student> getStudentsByPage(int id, int pageid, int total, String search);
 
 	Long countEmployeesBySearch(int id, String search);
+
+	List<Student> allStudent();
+
+	Student getStudentByIdRest(int id);
 
 }
