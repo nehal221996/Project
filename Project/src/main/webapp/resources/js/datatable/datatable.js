@@ -75,35 +75,36 @@ $(document)
 													"title" : "delete",
 													"render" : function(data,
 															type, row) {
-
-														return '<a href="/api/delete?id='
+													
+														/*return '<a href="/api/delete?id='
 																+ data
-																+ '">Delete</a>';
+																+ '">Delete</a>';*/
 
 														return '<a href="/api/delete?id='
 																+ data
 																+ '" id=del>Delete</a>';
 													}
 
-												} ],
+												}
+												],
 										"processing" : true,
 										"serverSide" : true,
 
 									});
 
-					$('#example tbody')
+					$('#example')
 							.on(
 									'click',
 									'tr td #del',
-									function() {
+									function(result) {
 										var row = $(this).parents('tr')[0];
 										var data = (example.row(row).data());
 										var con = confirm("Are you sure you want to delete this profile Id "
 												+ data["id"])
-										if (con) {
-											// Do Something
+										if (con == true) {
+											 return true;
 										} else {
-											// Nothing to do here
+											 return false;
 										}
 
 									});

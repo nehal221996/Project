@@ -624,9 +624,10 @@ public class SchoolController {
 			System.out.print(s);
 			if (s.size() > 0) {
 				model.addObject("school", s.get(0));
-				// String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
+				//String base64Encoded = Base64.getEncoder().encodeToString(school.getImage());
 				model.addObject("student", student);
-				// model.addObject("Image", base64Encoded);
+				//model.addObject("Image", base64Encoded);
+				//System.out.println(base64Encoded);
 				model.setViewName("schoolInfo");
 			} else {
 				model.addObject("schoolId", schoolId);

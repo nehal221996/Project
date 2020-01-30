@@ -116,4 +116,14 @@ public class StudentServiceImpl implements StudentService {
 	public Admin getAdminDetail(String email, String pass) {
 		return studentDao.getAdminDetail(email,pass);
 	}
+
+	@Override
+	public List<Student> getStudentsByPage(int page_id, int total, String search) {
+		return studentDao.getStudentsByPage( page_id, total, search);
+	}
+
+	@Override
+	public int countEmployeesBySearch(String search) {
+		return studentDao.countEmployeesBySearch( search);
+	}
 }

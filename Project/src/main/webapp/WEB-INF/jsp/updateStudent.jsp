@@ -46,7 +46,7 @@
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading p-3 mb-2 bg-secondary text-white">Welcome
-				to ${school.school_name} ${student.name }</div>
+				 ${student.name }</div>
 			<div class="list-group list-group-flush">
 				<a href="schoolInfo"
 					class="list-group-item list-group-item-action bg-light"><span

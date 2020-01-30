@@ -128,6 +128,26 @@ public class LoginController {
 		}
 
 	}
+	
+	@RequestMapping("/allschool")
+	public ModelAndView showAllSchool(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Admin a= (Admin) session.getAttribute("a");
+		ModelAndView m=new ModelAndView();
+		if(a != null)
+		{
+			return new ModelAndView("redirect:/school/index");
+		}else {
+			List<School> sdata=schoolService.getSchool();
+			System.out.println("sdata");
+			System.out.println(sdata);
+			m.addObject("sdata", sdata);
+			m.setViewName("viewSchools");
+			return m;
+		}
+		
+		
+	}
 
 	// ajax call for all student view yet not implemented
 	@RequestMapping(value = "/studentPagination/{pageNo}/{propertyPerPage}", method = RequestMethod.GET)
@@ -136,8 +156,7 @@ public class LoginController {
 			@PathVariable Integer propertyPerPage) throws ParseException {
 		System.out.println("pageno " + pageNo);
 		HttpSession session = request.getSession();
-		Admin admin=(Admin) session.getAttribute("admin");
-		int aid=(int) admin.getId();
+		
 		String search = request.getParameter("search[value]");
 		System.out.println("search is:" + search);
 		int page_id = pageNo;
@@ -147,8 +166,10 @@ public class LoginController {
 		} else {
 			page_id = (page_id - 1) * total + 1;
 		}
-		List<Student> std=studentService.getStudentsByPage(aid, page_id, total, search);
-		Long search_size =studentService.countEmployeesBySearch(aid, search);
+		List<Student> std=studentService.getStudentsByPage( page_id, total, search);
+		System.out.println(std);
+		int search_size =studentService.countEmployeesBySearch( search);
+		System.out.println("search_size"+search);
 		System.out.println("stduentList "+std);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("data", std);
@@ -156,7 +177,6 @@ public class LoginController {
 		map.put("recordsFiltered", search_size);
 		return map;
 		
-
 	}
 
 	public static String encryptThisString(String input) {

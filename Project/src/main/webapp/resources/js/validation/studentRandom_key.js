@@ -2,7 +2,6 @@ $(document).ready(function() {
 $("#btnAddkey").click(function(){ 
 	
 	
-	
 $.ajax({
 url: "studentRandom_key",
 type: "post",

@@ -5,6 +5,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.Proxy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "student", uniqueConstraints = { @UniqueConstraint(columnNames = "ID"),
@@ -50,6 +51,8 @@ public class Student {
 
 	@Column(name = "password", nullable = false)
 	private String password;
+
+	
 
 	@Column(name = "schoolId", nullable = false)
 	private int schoolId;

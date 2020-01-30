@@ -49,4 +49,8 @@ public interface StudentDao {
 
 	Admin getAdminDetail(String email, String pass);
 
+	List<Student> getStudentsByPage(int page_id, int total, String search);
+
+	int countEmployeesBySearch(String search);
+
 }

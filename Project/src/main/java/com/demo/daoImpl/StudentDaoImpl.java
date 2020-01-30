@@ -270,4 +270,31 @@ public class StudentDaoImpl implements StudentDao {
 		t.commit();
 		return a;
 	}
+
+	@Override
+	public List<Student> getStudentsByPage(int page_id, int total, String search) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = " from Student where  name Like concat('%',:search,'%')";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("search", search);
+		query.setFirstResult(page_id - 1);
+		query.setMaxResults(total);
+		List<Student> std = query.list();
+		t.commit();
+		return std;
+	}
+
+	@Override
+	public int countEmployeesBySearch(String search) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = "select count(*) from Student name Like concat('%',:search,'%')";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("search", search);
+		int count = (int) query.uniqueResult();
+		List<Student> std = query.list();
+		t.commit();
+		return count;
+	}
 }

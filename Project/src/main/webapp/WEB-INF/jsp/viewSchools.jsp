@@ -93,7 +93,7 @@
 
 					<div class="panel panel-default">
 						<!-- Default panel contents -->
-						<div class="panel-heading">Student Details</div>
+						<div class="panel-heading">School Details</div>
 						<div class="panel-body"></div>
 						<!-- Table -->
 						<table id="example" class="display" style="width: 100%">
@@ -101,33 +101,19 @@
 							<thead>
 								<tr>
 									<th>Id</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Date Of Birth</th>
-									<th>Gender</th>
-									<th>Address</th>
-									<th>State</th>
-									<th>City</th>
-									<th>Pincode</th>
-									<th>Mobile No</th>
-									<th>Date of Joining</th>
-
+									<th>School Name</th>
+									<th>School Email</th>
+									<th>Google_Id</th>
+									<th>Random Key</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>Id</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Date Of Birth</th>
-									<th>Gender</th>
-									<th>Address</th>
-									<th>State</th>
-									<th>City</th>
-									<th>Pincode</th>
-									<th>Mobile No</th>
-									<th>Date of Joining</th>
-
+									<th>School Name</th>
+									<th>School Email</th>
+									<th>Google_Id</th>
+									<th>Random Key</th>
 								</tr>
 							</tfoot>
 
@@ -152,7 +138,7 @@
 	</script>
 
 	<script src="/resources/js/datatable/jquery.dataTables.min.js"></script>
-	<script src="/resources/js/datatable/admin_datatable.js"></script>
+	<script src="/resources/js/datatable/school_datatable.js"></script>
 
 
 

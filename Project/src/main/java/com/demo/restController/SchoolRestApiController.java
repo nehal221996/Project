@@ -103,8 +103,7 @@ public class SchoolRestApiController {
 	public void updateSchool(@PathVariable Integer id, @RequestBody School school) {
 			School s=schoolService.getSchoolById(id);
 			s.setSchool_name(school.getSchool_name());
-			String encodedPassword = encryptThisString(school.getSchool_pass());
-			school.setSchool_pass(encodedPassword);
+			s.setImage(school.getImage());
 			schoolService.updateSchool(s);
 	}
 
