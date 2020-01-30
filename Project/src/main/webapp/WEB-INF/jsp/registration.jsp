@@ -42,12 +42,12 @@
 
 							<div class="form-group">
 								<label>Password</label> <input class="form-control"
-									type="password" name="school_pass" id="" />
+									type="password" name="school_pass" id="school_pass" />
 							</div>
 
 							<div class="form-group">
 								<label>Confirm Password</label> <input class="form-control"
-									type="password" name="con_pass" id="" />
+									type="password" name="con_pass" id="con_pass" />
 							</div>
 
 							<div class="form-group">
@@ -99,7 +99,7 @@
 								},
 								con_pass : {
 									required : true,
-									minlength : 5
+									equalTo : "#school_pass",
 								},
 								image : "required"
 							},
@@ -115,8 +115,8 @@
 									minlength : "Your password must be at least 5 characters long"
 								},
 								con_pass : {
-									required : "Please confirm your password",
-									minlength : "Your password must be at least 5 characters long"
+									required : "Confirm password required",
+									equalTo : "Password not match",
 								},
 								image : "Please select your School Logo"
 							},
