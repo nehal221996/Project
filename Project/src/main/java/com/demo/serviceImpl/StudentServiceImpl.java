@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.demo.dao.SchoolDao;
 import com.demo.dao.StudentDao;
+import com.demo.model.Admin;
 import com.demo.model.Student;
 import com.demo.service.StudentService;
 
@@ -109,5 +110,10 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student getStudentByIdRest(int id) {// TODO Auto-generated method stub
 		return studentDao.getStudentByIdRest(id);
+	}
+
+	@Override
+	public Admin getAdminDetail(String email, String pass) {
+		return studentDao.getAdminDetail(email,pass);
 	}
 }

@@ -2,6 +2,7 @@ package com.demo.service;
 
 import java.util.List;
 
+import com.demo.model.Admin;
 import com.demo.model.Student;
 
 public interface StudentService {
@@ -45,5 +46,7 @@ public interface StudentService {
 	List<Student> allStudent();
 	
 	Student getStudentByIdRest(int id);
+
+	Admin getAdminDetail(String email, String pass);
 
 }

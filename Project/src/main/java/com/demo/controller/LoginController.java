@@ -10,11 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.model.Admin;
 import com.demo.model.School;
 import com.demo.model.Student;
 import com.demo.service.SchoolService;
@@ -40,7 +42,7 @@ public class LoginController {
 	public ModelAndView loginR(@RequestParam("email") String email, @RequestParam("password") String password,
 			@RequestParam("login_as") String login_as, HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
-
+		System.out.println("a");
 		// checking if user belongs to school or student
 		if ("student".equals(login_as)) {
 			String pass = encryptThisString(password);
@@ -66,24 +68,61 @@ public class LoginController {
 			String pass = encryptThisString(password);
 			School s = schoolService.getSchoolDetail(email, pass);
 			if (s != null) {
+				System.out.println(s);
 				HttpSession session = request.getSession();
 				session.setAttribute("school", s);
 				model.setViewName("redirect:display");
 				return model;
 			} else {
+				System.out.println(s);
 				String msg = "Login Error";
 				model.addObject("msg", msg);
 				model.setViewName("login");
 
 			}
 
-		} else {
-			ModelAndView page = new ModelAndView();
-			page.setViewName("login");
-			return page;
+		} else if ("admin".equals(login_as)) {
+			String pass = null;
+			System.out.println("a");
+			Admin a = studentService.getAdminDetail(email, pass);
+			System.out.println("a");
+			if (a != null) {
+				System.out.println("ad");
+				String msg = "Login Error";
+				model.addObject("msg", msg);
+				model.setViewName("login");
+			} else {
+				System.err.println("as");
+				HttpSession session = request.getSession();
+				session.setAttribute("admin", a);
+				model.setViewName("redirect:admin");
+				return model;
+				
+
+			}
 		}
 
 		return model;
+
+	}
+
+	@RequestMapping("/admin")
+	public ModelAndView show(HttpServletRequest request) {
+		System.out.println("s");
+		HttpSession session = request.getSession();
+		Admin a = (Admin) session.getAttribute("a");
+		ModelAndView m = new ModelAndView();
+		if (a != null) {
+			return new ModelAndView("redirect:/school/index");
+		} else {
+			List<Student> sdata = studentService.allStudent();
+			System.out.println("sdata");
+			System.out.println(sdata);
+			m.addObject("sdata", sdata);
+			m.setViewName("viewStudents");
+			return m;
+		}
+		
 
 	}
 

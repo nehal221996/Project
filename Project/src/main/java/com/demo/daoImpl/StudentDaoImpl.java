@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.demo.dao.StudentDao;
+import com.demo.model.Admin;
 import com.demo.model.School;
 import com.demo.model.Student;
 
@@ -255,5 +256,18 @@ public class StudentDaoImpl implements StudentDao {
 		t.commit();
 		return s;
 		
+	}
+
+	@Override
+	public Admin getAdminDetail(String email, String pass) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction t = session.beginTransaction();
+		String SQL_QUERY = "from Admin where aemail=:email and pass=:pass";
+		Query query = session.createQuery(SQL_QUERY);
+		query.setParameter("email", email);
+		query.setParameter("pass", pass);
+		Admin a = (Admin) query.uniqueResult();
+		t.commit();
+		return a;
 	}
 }

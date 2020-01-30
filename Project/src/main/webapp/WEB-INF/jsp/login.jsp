@@ -41,6 +41,7 @@
 										<option value="">select Login as</option>
 										<option value="school">School</option>
 										<option value="student">Student</option>
+										<option value="admin">Admin</option>
 									</select>
 								</div>
 
