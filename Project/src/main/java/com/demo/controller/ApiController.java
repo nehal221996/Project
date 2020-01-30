@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.model.Admin;
 import com.demo.model.School;
 import com.demo.model.Student;
 import com.demo.service.SchoolService;
@@ -59,6 +60,19 @@ public class ApiController
 		Map<String, Object> resp = new HashMap<String, Object>();
 		System.out.println("studentList " +studentList);
 		resp.put("data", studentList);
+		return resp;
+
+	}
+	
+	@RequestMapping(value = "/getAllStudent", method = RequestMethod.GET)
+	public Map<String, Object> getAllStudent(HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		Admin admin=(Admin) session.getAttribute("admin");
+		List<Student> s=studentService.allStudent();
+		System.out.println(s);
+		Map<String, Object> resp = new HashMap<String, Object>();
+		resp.put("data", s);
 		return resp;
 
 	}
