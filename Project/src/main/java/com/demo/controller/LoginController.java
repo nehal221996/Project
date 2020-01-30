@@ -3,17 +3,22 @@ package com.demo.controller;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.model.Admin;
@@ -97,7 +102,6 @@ public class LoginController {
 				session.setAttribute("admin", a);
 				model.setViewName("redirect:admin");
 				return model;
-				
 
 			}
 		}
@@ -122,6 +126,35 @@ public class LoginController {
 			m.setViewName("viewStudents");
 			return m;
 		}
+
+	}
+
+	// ajax call for all student view yet not implemented
+	@RequestMapping(value = "/studentPagination/{pageNo}/{propertyPerPage}", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getStudentsPage(HttpServletRequest request, @PathVariable Integer pageNo,
+			@PathVariable Integer propertyPerPage) throws ParseException {
+		System.out.println("pageno " + pageNo);
+		HttpSession session = request.getSession();
+		Admin admin=(Admin) session.getAttribute("admin");
+		int aid=(int) admin.getId();
+		String search = request.getParameter("search[value]");
+		System.out.println("search is:" + search);
+		int page_id = pageNo;
+		int total = propertyPerPage;
+		if (page_id == 1) { // do nothing!
+
+		} else {
+			page_id = (page_id - 1) * total + 1;
+		}
+		List<Student> std=studentService.getStudentsByPage(aid, page_id, total, search);
+		Long search_size =studentService.countEmployeesBySearch(aid, search);
+		System.out.println("stduentList "+std);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", std);
+		map.put("recordsTotal", search_size);
+		map.put("recordsFiltered", search_size);
+		return map;
 		
 
 	}

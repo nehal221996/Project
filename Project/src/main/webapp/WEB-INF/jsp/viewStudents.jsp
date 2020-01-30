@@ -41,9 +41,7 @@
 										<th>Pincode</th>
 										<th>Mobile No</th>
 										<th>Date of Joining</th>
-										<th>Delete</th>
-
-										<!-- <th>Password</th> -->
+										
 
 									</tr>
 								</thead>
@@ -60,10 +58,6 @@
 										<th>Pincode</th>
 										<th>Mobile No</th>
 										<th>Date of Joining</th>
-										<th>Delete</th>
-
-
-										<%-- <td><a href="delete?did=${dt.id}">Delete</a></td> --%>
 
 									</tr>
 								</tfoot>

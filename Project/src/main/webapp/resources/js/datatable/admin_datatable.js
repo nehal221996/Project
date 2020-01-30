@@ -18,6 +18,10 @@ $(document)
 												$('#example').DataTable().ajax
 														.url("/api/getAllStudent");
 												
+												/*$('#example').DataTable().ajax
+												.url("/school/studentPagination/"
+														+ (info.page + 1)
+														+ "/" + 10);*/
 												
 											},
 										},
@@ -54,44 +58,13 @@ $(document)
 												},
 												{
 													"data" : "doj"
-												},
-												{
-
-													"data" : "id",
-													"title" : "delete",
-													"render" : function(data,
-															type, row) {
-
-														return '<a href="/api/delete?id='
-																+ data
-																+ '">Delete</a>';
-
-														return '<a href="/api/delete?id='
-																+ data
-																+ '" id=del>Delete</a>';
-													}
-
-												} 
+												}
+												
 												],
 										"processing" : true,
 										"serverSide" : true,
 
 									});
 
-					$('#example tbody')
-							.on(
-									'click',
-									'tr td #del',
-									function() {
-										var row = $(this).parents('tr')[0];
-										var data = (example.row(row).data());
-										var con = confirm("Are you sure you want to delete this profile Id "
-												+ data["id"])
-										if (con) {
-											// Do Something
-										} else {
-											// Nothing to do here
-										}
-
-									});
+					
 				});
