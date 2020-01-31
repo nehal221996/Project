@@ -90,7 +90,7 @@ public class ApiController
 
 	}
 
-	// for ajax call in employee_view
+	// for ajax call in student_view
 	@RequestMapping(value = "/studentPagination/{pageNo}/{propertyPerPage}", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getEmployeePage(HttpServletRequest request, @PathVariable Integer pageNo,

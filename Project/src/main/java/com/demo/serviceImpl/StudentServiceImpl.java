@@ -123,7 +123,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public int countEmployeesBySearch(String search) {
+	public Long countEmployeesBySearch(String search) {
 		return studentDao.countEmployeesBySearch( search);
 	}
+
 }

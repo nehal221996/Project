@@ -51,6 +51,7 @@ public interface StudentService {
 
 	List<Student> getStudentsByPage(int page_id, int total, String search);
 
-	int countEmployeesBySearch(String search);
+	Long countEmployeesBySearch(String search);
+
 
 }

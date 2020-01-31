@@ -17,7 +17,6 @@ import com.demo.model.School;
 import com.demo.model.Student;
 
 
-
 @Repository
 @Transactional
 public class StudentDaoImpl implements StudentDao {
@@ -205,7 +204,9 @@ public class StudentDaoImpl implements StudentDao {
 	{
 		Session session = sessionFactory.getCurrentSession();
 		Transaction t = session.beginTransaction();
-		session.update(std);
+	//	Student s=session.load(Student.class,  new Integer(id));
+		session.merge(std);
+		System.out.println(std);
 		t.commit();
 	}
 
@@ -252,7 +253,7 @@ public class StudentDaoImpl implements StudentDao {
 	public Student getStudentByIdRest(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction t = session.beginTransaction();
-		Student s=session.load(Student.class,  new Integer(id));
+		Student s=session.get(Student.class,  new Integer(id));
 		t.commit();
 		return s;
 		
@@ -286,15 +287,15 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public int countEmployeesBySearch(String search) {
+	public Long countEmployeesBySearch(String search) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction t = session.beginTransaction();
-		String SQL_QUERY = "select count(*) from Student name Like concat('%',:search,'%')";
+		String SQL_QUERY = "select count(*) from Student where name Like concat('%',:search,'%')";
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter("search", search);
-		int count = (int) query.uniqueResult();
+		long count =  (long) query.uniqueResult();
 		List<Student> std = query.list();
 		t.commit();
-		return count;
+		return (long) count;
 	}
 }

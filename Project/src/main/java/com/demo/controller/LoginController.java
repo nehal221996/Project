@@ -168,7 +168,7 @@ public class LoginController {
 		}
 		List<Student> std=studentService.getStudentsByPage( page_id, total, search);
 		System.out.println(std);
-		int search_size =studentService.countEmployeesBySearch( search);
+		Long search_size =studentService.countEmployeesBySearch( search);
 		System.out.println("search_size"+search);
 		System.out.println("stduentList "+std);
 		Map<String, Object> map = new HashMap<String, Object>();

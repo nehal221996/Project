@@ -101,10 +101,9 @@ public class StudentRestApiController {
 	@PutMapping("/student/update/{id}")
 	public void updateStudent(@PathVariable Integer id, @RequestBody Student std) {
 		Student s =studentService.getStudentByIdRest(id);
-		s.setName(std.getName());
-		s.setAddress(std.getAddress());
-		s.setCity(std.getCity());
-		s.setState(std.getState());
+		//s.setName(std.getName());
+		//s.setAddress(std.getAddress());
+		//s.setCity(std.getCity());
 		studentService.updateStudent(s);
 	}
 

@@ -18,7 +18,7 @@ public class Student {
 	@Column(name = "id", nullable = false, unique = true)
 	int id;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name")
 	String name;
 
 	@Column(name = "email", nullable = false, unique = true)

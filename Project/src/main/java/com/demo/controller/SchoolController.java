@@ -43,7 +43,7 @@ import com.demo.service.StudentService;
 import com.demo.util.PDFGenerator;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
+import org.junit.*;
 
 @Controller
 @RequestMapping(value = "/school")
@@ -54,6 +54,18 @@ public class SchoolController {
 	@Autowired
 	StudentService studentService;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public ModelAndView registration(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
