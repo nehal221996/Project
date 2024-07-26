@@ -7,6 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Project Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<packaging>war</packaging>
 
 
 	<properties>

@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 // org.springframework.orm.jpa.EntityManagerHolder cannot be cast to
 // org.springframework.orm.hibernate5.SessionHolder
 
-public class Application {
+public class Application extends SpringServletContainerInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	
